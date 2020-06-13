@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         // Validates text fields when register button is clicked
-        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
+        /*mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = mEmail.getText().toString().trim();
@@ -70,14 +70,36 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
 
-        // on click event that takes user back to login activity
-        mBackBtn.setOnClickListener(new View.OnClickListener() {
+    }
+
+    public void register(View view) {
+        String email = mEmail.getText().toString().trim();
+        String password = mPassword.getText().toString().trim();
+
+        if(TextUtils.isEmpty(email) | TextUtils.isEmpty(password)){
+            Toast.makeText(getApplicationContext(),"Please Enter Correct Information",Toast.LENGTH_LONG).show();
+        }
+
+        // This creates a new user in firebase
+        fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(RegisterActivity.this,"User Created",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
+    }
+
+    // on click event that takes user back to login activity
+    public void loginLink(View view) {
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
 }

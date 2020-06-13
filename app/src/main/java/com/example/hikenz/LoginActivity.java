@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
 
         // validates text fields when login button is clicked
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+        /*mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = mEmail.getText().toString().trim();
@@ -59,15 +59,33 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
 
-        // on click event that takes user to the register activity
-        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
+    }
+    // on click event that takes user to the register activity
+    public void registerLink(View view) {
+        startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+    }
+
+    // validates text fields when login button is clicked
+    public void Login(View view) {
+        String email = mEmail.getText().toString().trim();
+        String password = mPassword.getText().toString().trim();
+        if(TextUtils.isEmpty(email) | TextUtils.isEmpty(password)){
+            Toast.makeText(getApplicationContext(),"Please Enter Correct Information",Toast.LENGTH_LONG).show();
+        }
+
+        // authenticate the user
+        fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
-
 }
