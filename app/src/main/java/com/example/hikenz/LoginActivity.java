@@ -34,32 +34,11 @@ public class LoginActivity extends AppCompatActivity {
         mRegisterBtn = findViewById(R.id.register_Button);
         fAuth = FirebaseAuth.getInstance();
 
-        // validates text fields when login button is clicked
-        /*mLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
-
-                if(TextUtils.isEmpty(email) | TextUtils.isEmpty(password)){
-                    Toast.makeText(getApplicationContext(),"Please Enter Correct Information",Toast.LENGTH_LONG).show();
-                }
-
-                // authenticate the user
-                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(),"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-            }
-        });*/
+        // This avoids return users needing to login
+        if(fAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
 
     }
     // on click event that takes user to the register activity
@@ -69,23 +48,24 @@ public class LoginActivity extends AppCompatActivity {
 
     // validates text fields when login button is clicked
     public void Login(View view) {
-        String email = mEmail.getText().toString().trim();
-        String password = mPassword.getText().toString().trim();
-        if(TextUtils.isEmpty(email) | TextUtils.isEmpty(password)){
+        String email = mEmail.getText().toString();
+        String password = mPassword.getText().toString();
+        if(email.isEmpty() | password.isEmpty()){
             Toast.makeText(getApplicationContext(),"Please Enter Correct Information",Toast.LENGTH_LONG).show();
         }
-
+        else if (!(email.isEmpty() | password.isEmpty())){
         // authenticate the user
-        fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else{
-                    Toast.makeText(getApplicationContext(),"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+            });
+        }
     }
 }

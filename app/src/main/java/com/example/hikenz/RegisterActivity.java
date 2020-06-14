@@ -38,41 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         mBackBtn = findViewById(R.id.back_Link);
         fAuth = FirebaseAuth.getInstance();
 
-        // This avoids return users needing to login
-        if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
         }
-
-        // Validates text fields when register button is clicked
-        /*mRegisterBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
-
-                if(TextUtils.isEmpty(email) | TextUtils.isEmpty(password)){
-                    Toast.makeText(getApplicationContext(),"Please Enter Correct Information",Toast.LENGTH_LONG).show();
-                }
-
-                // This creates a new user in firebase
-                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this,"User Created",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(),"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-            }
-        });*/
-
-    }
 
     public void register(View view) {
         String email = mEmail.getText().toString().trim();
