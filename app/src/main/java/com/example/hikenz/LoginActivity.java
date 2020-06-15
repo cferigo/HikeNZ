@@ -28,10 +28,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mEmail = findViewById(R.id.email_TextField);
-        mPassword = findViewById(R.id.password_TextField);
+        mEmail = findViewById(R.id.loginEmail_TextField);
+        mPassword = findViewById(R.id.loginPassword_TextField);
         mLoginBtn = findViewById(R.id.login_Button);
-        mRegisterBtn = findViewById(R.id.register_Button);
+        mRegisterBtn = findViewById(R.id.register_Link);
         fAuth = FirebaseAuth.getInstance();
 
         // This avoids return users needing to login
@@ -43,8 +43,10 @@ public class LoginActivity extends AppCompatActivity {
     }
     // on click event that takes user to the register activity
     public void registerLink(View view) {
-        startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+        //startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+        Toast.makeText(getApplicationContext(),"test: " + mEmail,Toast.LENGTH_LONG).show();
     }
+
 
     // validates text fields when login button is clicked
     public void Login(View view) {
