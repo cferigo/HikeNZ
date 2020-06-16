@@ -22,4 +22,14 @@
         android:text="Logout"
         android:onClick="Logout"/>
 
+    <Button
+        android:id="@+id/profile_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logout_Button"
+        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"
+        android:text="Profile"
+        android:onClick="profileButton"/>
+
 </RelativeLayout>

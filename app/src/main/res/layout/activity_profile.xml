@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <TextView
+        android:id="@+id/profile_fName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="place holder"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/profile_lName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="place holder2"
+        android:gravity="center"
+        android:layout_below="@+id/profile_fName"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="place holder3"
+        android:gravity="center"
+        android:layout_below="@+id/profile_lName"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        />
+
+    <Button
+        android:id="@+id/Home_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Home"
+        android:onClick="homeButton"/>
+
+</RelativeLayout>
