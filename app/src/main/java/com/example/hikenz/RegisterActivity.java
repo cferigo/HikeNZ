@@ -49,17 +49,19 @@ public class RegisterActivity extends AppCompatActivity {
 
         }
 
+        // register button method that will create a new user in the database
     public void register(View view) {
         final String email = mEmail.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
         final String firstName = mFirstName.getText().toString();
         final String lastName = mLastName.getText().toString();
 
+        // quick validation to ensure the fields are not empty
         if(TextUtils.isEmpty(email) | TextUtils.isEmpty(password)){
             Toast.makeText(getApplicationContext(),"Please Enter Correct Information",Toast.LENGTH_LONG).show();
         }
 
-        // This creates a new user in firebase
+        // This creates a new user in firebase fireStore
         fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

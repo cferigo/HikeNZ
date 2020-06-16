@@ -34,7 +34,10 @@ public class ProfileActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
 
+        // Getting the current user
         DocumentReference docReference = fStore.collection("Users").document(userID);
+
+        // replacing the place holder text views with the current users information
         docReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -45,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    // takes the user back to the home page
     public void homeButton(View view) {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
