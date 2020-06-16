@@ -41,10 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
+
     // on click event that takes user to the register activity
     public void registerLink(View view) {
-        //startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
-        Toast.makeText(getApplicationContext(),"test: " + mEmail,Toast.LENGTH_LONG).show();
+        startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
     }
 
 
