@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="false"
-    android:background="@drawable/background"
+    android:background="@drawable/bg3"
     tools:context=".LoginActivity">
 
     <EditText
@@ -20,6 +20,7 @@
         android:drawableLeft="@drawable/ic_action_user"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:textColor="#112710"
         android:textColorHint="#000000" />
 
 
@@ -35,13 +36,14 @@
         android:drawableLeft="@drawable/ic_action_pwd"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColor="#112710"
         android:textColorHint="#000000" />
 
     <TextView
         android:id="@+id/login_Header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="80dp"
         android:gravity="center"
         android:text="Hike NZ"
         android:textColor="#112710"
@@ -53,8 +55,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginCardView"
+        android:gravity="bottom"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="150dp"
         android:layout_marginRight="40dp"
         android:onClick="registerLink"
         android:text="Not a Member? Register Here"
@@ -75,8 +78,9 @@
             android:id="@+id/login_Button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#22D6F6"
-            android:text="LOGIN" />
+            android:background="#112710"
+            android:text="LOGIN"
+            android:textColor="#ffffff" />
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
