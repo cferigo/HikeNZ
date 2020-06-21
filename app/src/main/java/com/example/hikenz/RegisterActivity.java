@@ -21,7 +21,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -52,9 +54,17 @@ public class RegisterActivity extends AppCompatActivity {
         // register button method that will create a new user in the database
     public void register(View view) {
         final String email = mEmail.getText().toString().trim();
-        String password = mPassword.getText().toString().trim();
+        final String password = mPassword.getText().toString().trim();
         final String firstName = mFirstName.getText().toString();
         final String lastName = mLastName.getText().toString();
+
+        final String fav = "Favorite Tracks: ";
+        String[] favArray = fav.split("\\s*,\\s*");
+        final List<String> favorite = Arrays.asList(favArray);
+
+        final String fin = "Finished Tracks: ";
+        String[] finArray = fav.split("\\s*,\\s*");
+        final List<String> finished = Arrays.asList(favArray);
 
         // quick validation to ensure the fields are not empty
         if(TextUtils.isEmpty(email) | TextUtils.isEmpty(password)){
@@ -72,6 +82,9 @@ public class RegisterActivity extends AppCompatActivity {
                     user.put("firstName", firstName);
                     user.put("lastName", lastName);
                     user.put("email", email);
+                    user.put("favorite", favorite);
+                    user.put("finished", finished);
+
                     docReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
