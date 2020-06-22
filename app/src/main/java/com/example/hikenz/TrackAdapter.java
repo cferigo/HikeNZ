@@ -20,8 +20,9 @@ public class TrackAdapter extends FirestoreRecyclerAdapter<Track, TrackAdapter.T
     @Override
     protected void onBindViewHolder(@NonNull TrackHolder trackHolder, int i, @NonNull Track model) {
         trackHolder.textViewTitle.setText(model.getName());
-        trackHolder.textViewDescription.setText(model.getDescription());
-
+        trackHolder.textViewTime.setText(model.getTime() + " hr(s)");
+        trackHolder.textViewDistance.setText(model.getDistance() + " km");
+        trackHolder.textViewDifficulty.setText(model.getDifficulty());
     }
 
     @NonNull
@@ -32,13 +33,14 @@ public class TrackAdapter extends FirestoreRecyclerAdapter<Track, TrackAdapter.T
     }
 
     class TrackHolder extends RecyclerView.ViewHolder {
-        TextView textViewTitle;
-        TextView textViewDescription;
+        TextView textViewTitle, textViewTime, textViewDistance, textViewDifficulty;
 
         public TrackHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.title_textView);
-            textViewDescription = itemView.findViewById(R.id.description_textView);
+            textViewTime = itemView.findViewById(R.id.card_time_textView);
+            textViewDistance = itemView.findViewById(R.id.card_distance_textView);
+            textViewDifficulty = itemView.findViewById(R.id.card_difficulty_textView);
         }
     }
 }

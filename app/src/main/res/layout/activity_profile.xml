@@ -39,6 +39,14 @@
         android:textSize="20sp"
         />
 
+    <ListView
+        android:id="@+id/profile_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Home_Button"
+        />
+
+
     <Button
         android:id="@+id/Home_Button"
         android:layout_width="wrap_content"
