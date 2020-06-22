@@ -15,7 +15,7 @@
         android:layout_below="@+id/login_Header"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:layout_marginRight="70dp"
         android:drawableLeft="@drawable/ic_action_user"
         android:hint="Email"
@@ -43,10 +43,10 @@
         android:id="@+id/login_Header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="Hike NZ"
-        android:textColor="#112710"
+        android:textColor="#234d20"
         android:textSize="60sp"
         android:textStyle="bold" />
 
@@ -56,14 +56,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginCardView"
         android:gravity="bottom"
+        android:padding="5dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="40dp"
         android:onClick="registerLink"
         android:text="Not a Member? Register Here"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/loginCardView"
         android:layout_width="300dp"
@@ -78,7 +78,7 @@
             android:id="@+id/login_Button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#112710"
+            android:background="#234d20"
             android:onClick="Login"
             android:text="LOGIN"
             android:textColor="#ffffff" />
