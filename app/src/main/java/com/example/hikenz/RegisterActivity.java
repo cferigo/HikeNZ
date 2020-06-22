@@ -48,10 +48,10 @@ public class RegisterActivity extends AppCompatActivity {
         mBackBtn = findViewById(R.id.back_Link);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-
         }
 
         // register button method that will create a new user in the database
+    // needs validation show email must be entered, and phone needs to be between 9-11 digits
     public void register(View view) {
         final String email = mEmail.getText().toString().trim();
         final String password = mPassword.getText().toString().trim();
@@ -97,7 +97,6 @@ public class RegisterActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(getApplicationContext(),"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
     }
