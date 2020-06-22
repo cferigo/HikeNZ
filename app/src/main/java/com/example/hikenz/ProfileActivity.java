@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +22,7 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
+    ListView favorites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
         firstName = findViewById(R.id.profile_fName);
         lastName = findViewById(R.id.profile_lName);
         email = findViewById(R.id.profile_email);
+        favorites = findViewById(R.id.profile_favorite);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
@@ -44,6 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
                 firstName.setText(documentSnapshot.getString("firstName"));
                 lastName.setText(documentSnapshot.getString("lastName"));
                 email.setText(documentSnapshot.getString("email"));
+                //favorites.setText(documentSnapshot.getString("favorites"));
             }
         });
     }

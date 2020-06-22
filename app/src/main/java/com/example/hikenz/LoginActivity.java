@@ -39,14 +39,12 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
-
     }
 
     // on click event that takes user to the register activity
     public void registerLink(View view) {
         startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
     }
-
 
     // validates text fields when login button is clicked
     public void Login(View view) {
