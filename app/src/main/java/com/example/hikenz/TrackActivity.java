@@ -3,6 +3,7 @@ package com.example.hikenz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.firestore.DocumentReference;
@@ -14,7 +15,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import javax.annotation.Nullable;
 
 public class TrackActivity extends AppCompatActivity {
-    TextView name, time, distance, difficulty, description, dogFriendly;
+    TextView name, time, distance, difficulty, description;
+    ImageView dogFriendly;
     FirebaseFirestore fStore;
 
     @Override
@@ -36,12 +38,21 @@ public class TrackActivity extends AppCompatActivity {
         docReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                long j = documentSnapshot.getLong("Distance");
+                if ( j > 10){
+                    time.setText(documentSnapshot.getLong("Time").toString() + " day(s)");
+                }
+                else{
+                    time.setText(documentSnapshot.getLong("Time").toString() + " hr(s)");
+                }
                 name.setText(documentSnapshot.getString("Name"));
-               // time.setText(documentSnapshot.getString("Time"));
-               // distance.setText(documentSnapshot.getString("Distance"));
+                distance.setText(j + " km");
                 difficulty.setText(documentSnapshot.getString("Difficulty"));
                 description.setText(documentSnapshot.getString("Description"));
-                //time.setText(documentSnapshot.getString("Time"));
+                boolean i = documentSnapshot.getBoolean("DogFriendly");
+                if (i == true) {
+                    dogFriendly.setBackgroundResource(R.drawable.ic_yes);
+                }
             }
         });
 

@@ -21,9 +21,15 @@ public class TrackAdapter extends FirestoreRecyclerAdapter<Track, TrackAdapter.T
 
     @Override
     protected void onBindViewHolder(@NonNull TrackHolder trackHolder, int i, @NonNull Track model) {
+        long l = model.getDistance();
+        if ( l>10){
+            trackHolder.textViewTime.setText(model.getTime() + " day(s)");
+        }
+        else {
+            trackHolder.textViewTime.setText(model.getTime() + " hr(s)");
+        }
         trackHolder.textViewTitle.setText(model.getName());
-        trackHolder.textViewTime.setText(model.getTime() + " hr(s)");
-        trackHolder.textViewDistance.setText(model.getDistance() + " km");
+        trackHolder.textViewDistance.setText(l + " km");
         trackHolder.textViewDifficulty.setText(model.getDifficulty());
     }
 
