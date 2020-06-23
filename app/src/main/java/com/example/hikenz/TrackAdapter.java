@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class TrackAdapter extends FirestoreRecyclerAdapter<Track, TrackAdapter.TrackHolder> {
+    private OnItemClickListener listener;
 
     public TrackAdapter(@NonNull FirestoreRecyclerOptions<Track> options) {
         super(options);
@@ -41,6 +43,26 @@ public class TrackAdapter extends FirestoreRecyclerAdapter<Track, TrackAdapter.T
             textViewTime = itemView.findViewById(R.id.card_time_textView);
             textViewDistance = itemView.findViewById(R.id.card_distance_textView);
             textViewDifficulty = itemView.findViewById(R.id.card_difficulty_textView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null){
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
         }
     }
+
+    public interface  OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
+    }
 }
+
+
