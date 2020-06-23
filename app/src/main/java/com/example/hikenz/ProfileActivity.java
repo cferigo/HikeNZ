@@ -38,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
         firstName = findViewById(R.id.profile_fName);
         lastName = findViewById(R.id.profile_lName);
         email = findViewById(R.id.profile_email);
-        favorites = findViewById(R.id.profile_favorite);
+        //favorites = findViewById(R.id.profile_favorite);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
