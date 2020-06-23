@@ -7,14 +7,28 @@
     android:background="#cbcbcb"
     tools:context=".ProfileActivity">
 
+
+
+    <ImageView
+        android:id="@+id/profile_imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="135dp"
+        android:src="@drawable/acc_image"
+        />
+
     <TextView
         android:id="@+id/profile_fName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="place holder"
+        android:textStyle="bold"
+        android:textColor="#000000"
         android:gravity="center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
         android:textSize="20sp"
+        android:layout_below="@+id/profile_imageView"
         />
 
     <TextView
@@ -22,37 +36,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="place holder2"
+        android:textColor="#000000"
         android:gravity="center"
         android:layout_below="@+id/profile_fName"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textSize="20sp"
         />
 
     <TextView
         android:id="@+id/profile_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="30dp"
         android:text="place holder3"
+        android:textColor="#000000"
         android:gravity="center"
         android:layout_below="@+id/profile_lName"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
         android:textSize="20sp"
+        android:paddingLeft="2dp"
+        android:drawableLeft="@drawable/ic_action_email"
+
+
         />
+
+    <Button
+        android:layout_below="@id/profile_email"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="160dp"
+        android:id="@+id/logout_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:text="Logout"
+        android:textColor="#ffffff"
+        android:onClick="Logout"/>
 
     <ListView
         android:id="@+id/profile_favorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Home_Button"
+        android:layout_below="@+id/logout_Button"
         />
 
 
-    <Button
-        android:id="@+id/Home_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Home"
-        android:onClick="homeButton"/>
+
 
 </RelativeLayout>

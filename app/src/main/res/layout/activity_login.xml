@@ -54,34 +54,30 @@
         android:id="@+id/register_Link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginCardView"
+        android:layout_below="@+id/login_Button"
         android:gravity="bottom"
         android:padding="5dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="140dp"
         android:layout_marginRight="40dp"
         android:onClick="registerLink"
         android:text="Not a Member? Register Here"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp" />
-    <androidx.cardview.widget.CardView
-        android:id="@+id/loginCardView"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/loginPassword_TextField"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:visibility="visible"
-        app:cardBackgroundColor="@android:color/holo_green_dark">
+
+
 
         <Button
             android:id="@+id/login_Button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#234d20"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
             android:onClick="Login"
             android:text="LOGIN"
+            android:layout_below="@id/loginPassword_TextField"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="100dp"
             android:textColor="#ffffff" />
-    </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

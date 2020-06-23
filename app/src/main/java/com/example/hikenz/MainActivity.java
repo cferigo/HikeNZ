@@ -94,11 +94,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // when a user clicks logout it clears the current users data so that next time the user opens the app ahain they must login
-    public void Logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-        finish();
-    }
+
 
     // button that takes the user to their profile page
     public void profileButton(View view) {

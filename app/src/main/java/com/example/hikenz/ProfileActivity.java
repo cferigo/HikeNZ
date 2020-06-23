@@ -80,4 +80,9 @@ public class ProfileActivity extends AppCompatActivity {
     public void homeButton(View view) {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
+    public void Logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        finish();
+    }
 }
