@@ -38,9 +38,15 @@ public class TrackActivity extends AppCompatActivity {
         docReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                long j = documentSnapshot.getLong("Distance");
+                if ( j > 10){
+                    time.setText(documentSnapshot.getLong("Time").toString() + " day(s)");
+                }
+                else{
+                    time.setText(documentSnapshot.getLong("Time").toString() + " hr(s)");
+                }
                 name.setText(documentSnapshot.getString("Name"));
-                time.setText(documentSnapshot.getLong("Time").toString() + " hr(s)");
-                distance.setText(documentSnapshot.getLong("Distance").toString() + " km");
+                distance.setText(j + " km");
                 difficulty.setText(documentSnapshot.getString("Difficulty"));
                 description.setText(documentSnapshot.getString("Description"));
                 boolean i = documentSnapshot.getBoolean("DogFriendly");
