@@ -6,9 +6,9 @@
     android:layout_marginTop="20dp"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
-    app:cardBackgroundColor="#ebebeb"
+    app:cardBackgroundColor="#ffffff"
     app:cardElevation="4dp"
-    android:alpha="0.8">
+    android:alpha="0.9">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,6 +22,7 @@
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:text="title"
+            android:textColor="#000000"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:maxLines="1"/>
 
@@ -47,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ic_time"
                 android:text="something "
+                android:textColor="#000000"
                 android:textSize="16sp"/>
             </LinearLayout>
 
@@ -82,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ic_time"
                     android:text="something"
+                    android:textColor="#000000"
                     android:textSize="16sp"/>
             </LinearLayout>
 
@@ -116,6 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ic_time"
                     android:text="something"
+                    android:textColor="#000000"
                     android:textSize="16sp"/>
             </LinearLayout>
     </RelativeLayout>

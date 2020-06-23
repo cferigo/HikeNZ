@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".TrackActivity">
+
+    <TextView
+        android:id="@+id/track_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="place holder"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/track_name"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="50dp"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Map/location"
+                android:gravity="center"
+                android:layout_marginTop="70dp"
+                android:textSize="30sp"
+                />
+
+            <RelativeLayout
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_toLeftOf="@+id/div_1"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ic_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="31dp"
+                        android:drawableTop="@drawable/ic_time" />
+
+                    <TextView
+                        android:id="@+id/track_time_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ic_time"
+                        android:text="something "
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/div_1"
+                    android:layout_width="2dp"
+                    android:layout_height="50dp"
+                    android:background="#b0b0b0"
+                    android:layout_toLeftOf="@+id/id_1"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+
+                <LinearLayout
+                    android:id="@+id/id_1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ic_distance"
+                        android:layout_width="match_parent"
+                        android:layout_height="31dp"
+                        android:drawableTop="@drawable/ic_distance" />
+
+                    <TextView
+                        android:id="@+id/track_distance_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ic_time"
+                        android:text="something"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/div_2"
+                    android:layout_width="2dp"
+                    android:layout_height="50dp"
+                    android:background="#b0b0b0"
+                    android:layout_toRightOf="@+id/id_1"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+
+                <LinearLayout
+                    android:layout_toRightOf="@+id/div_2"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ic_difficulty"
+                        android:layout_width="match_parent"
+                        android:layout_height="31dp"
+                        android:drawableTop="@drawable/ic_difficulty" />
+
+                    <TextView
+                        android:id="@+id/track_difficulty_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ic_time"
+                        android:text="something"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="8dp"
+                    android:id="@+id/dog_placeholder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dog Friendly "
+                    android:layout_marginRight="8dp"
+                    android:textColor="#000000"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/dogFriendly_ic"
+                    android:layout_toRightOf="@+id/dog_placeholder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="31dp"
+                    android:drawableTop="@drawable/ic_no" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:textSize="20sp"
+            />
+
+            <TextView
+                android:layout_margin="8dp"
+                android:id="@+id/track_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="place holder"
+                android:layout_marginTop="20dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                />
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/track_image_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_button"
+                android:text="Photos"
+                android:textColor="#ffffff" />
+
+                <Button
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/track_review_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_button"
+                    android:text="Reviews"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+</RelativeLayout>

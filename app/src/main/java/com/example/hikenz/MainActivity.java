@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.sax.StartElementListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -70,11 +71,14 @@ public class MainActivity extends AppCompatActivity {
                 Track track = documentSnapshot.toObject(Track.class);
                 //get id for track
                 String id = documentSnapshot.getId();
+                Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
+                intent.putExtra("trackid", id);
+                startActivity(intent);
                 //display id for track in a toast
-                Toast.makeText(getApplicationContext(),"id: " + id, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"id: " + id, Toast.LENGTH_LONG).show();
             }
         });
-        
+
     }
 
     @Override
