@@ -7,6 +7,18 @@
     android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/logout_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:text="Logout"
+        android:textColor="#ffffff"
+        android:onClick="Logout"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"

@@ -15,8 +15,7 @@
         android:layout_height="150dp"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="135dp"
-        android:src="@drawable/acc_image"
-        />
+        android:src="@drawable/acc_image" />
 
     <TextView
         android:id="@+id/profile_fName"
@@ -28,8 +27,7 @@
         android:gravity="center"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
-        android:layout_below="@+id/profile_imageView"
-        />
+        android:layout_below="@+id/profile_imageView" />
 
     <TextView
         android:id="@+id/profile_lName"
@@ -40,8 +38,7 @@
         android:gravity="center"
         android:layout_below="@+id/profile_fName"
         android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/profile_email"
@@ -55,20 +52,5 @@
         android:layout_marginLeft="100dp"
         android:textSize="20sp"
         android:paddingLeft="2dp"
-        android:drawableLeft="@drawable/ic_action_email"
-
-
-        />
-
-    <Button
-        android:layout_below="@id/profile_email"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="160dp"
-        android:id="@+id/logout_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:text="Logout"
-        android:textColor="#ffffff"
-        android:onClick="Logout"/>
+        android:drawableLeft="@drawable/ic_action_email" />
 </RelativeLayout>
