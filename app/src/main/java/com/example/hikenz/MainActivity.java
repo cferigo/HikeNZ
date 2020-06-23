@@ -34,15 +34,17 @@ public class MainActivity extends AppCompatActivity {
 
         setUpRecyclerView();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.actionbar_profile:
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 return true;
@@ -55,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setUpRecyclerView()
-    {
+    private void setUpRecyclerView() {
         Query query = trackRef;
         FirestoreRecyclerOptions<Track> options = new FirestoreRecyclerOptions.Builder<Track>().setQuery(query, Track.class).build();
         adapter = new TrackAdapter(options);
@@ -91,13 +92,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
-    }
-
-    // when a user clicks logout it clears the current users data so that next time the user opens the app ahain they must login
-
-
-    // button that takes the user to their profile page
-    public void profileButton(View view) {
-        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
     }
 }

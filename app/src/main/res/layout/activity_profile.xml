@@ -76,10 +76,18 @@
         android:id="@+id/profile_favorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+        android:layout_below="@+id/profile_email"
+=======
         android:layout_below="@+id/logout_Button"
+>>>>>>> 0ca89e027bcca21cf50a4336c2c4d3767331fbf7
         />
 
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 0ca89e027bcca21cf50a4336c2c4d3767331fbf7
 
 </RelativeLayout>

@@ -2,10 +2,13 @@ package com.example.hikenz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -57,6 +60,6 @@ public class TrackActivity extends AppCompatActivity {
         });
 
     }
-
+    // need to create a save track button
 
 }

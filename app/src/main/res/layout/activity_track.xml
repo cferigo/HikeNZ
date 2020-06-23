@@ -210,7 +210,6 @@
                     android:background="@drawable/round_button"
                     android:text="Reviews"
                     android:textColor="#ffffff" />
-
             </LinearLayout>
     </LinearLayout>
 </ScrollView>

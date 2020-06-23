@@ -63,8 +63,8 @@ public class RegisterActivity extends AppCompatActivity {
         final List<String> favorite = Arrays.asList(favArray);
 
         final String fin = "Finished Tracks: ";
-        String[] finArray = fav.split("\\s*,\\s*");
-        final List<String> finished = Arrays.asList(favArray);
+        String[] finArray = fin.split("\\s*,\\s*");
+        final List<String> finished = Arrays.asList(finArray);
 
         // quick validation to ensure the fields are not empty
         if(TextUtils.isEmpty(email) | TextUtils.isEmpty(password)){
