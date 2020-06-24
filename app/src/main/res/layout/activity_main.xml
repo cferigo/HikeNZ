@@ -22,19 +22,32 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="80dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
-            android:hint="Search"
-            />
+            android:hint="Search" />
+
         <Button
             android:layout_margin="8dp"
             android:id="@+id/main_search_button"
-            android:layout_width="40dp"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_search"
-            android:layout_alignParentRight="true"
-            android:onClick="searchName"/>
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
 
+    <Button
+        android:layout_below="@+id/r1"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/showTracks_Button"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:text="All Tracks"
+        android:textColor="#ffffff"
+        android:onClick="showAllTracks"/>
 
     <Button
         android:layout_alignParentBottom="true"
@@ -52,6 +65,6 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/r1"/>
+        android:layout_below="@+id/showTracks_Button"/>
 
 </RelativeLayout>

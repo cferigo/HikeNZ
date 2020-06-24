@@ -65,7 +65,7 @@
         android:background="@drawable/round_button"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:onClick="register"
+        android:onClick="addReview"
         android:text="Add Review"
         android:textColor="#ffffff"/>
 
