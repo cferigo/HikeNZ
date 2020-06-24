@@ -5,34 +5,59 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.sax.StartElementListener;
+import android.text.Editable;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference trackRef = db.collection("Tracks");
     private TrackAdapter adapter;
 
+    Button searchBtn;
+    EditText searchEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setUpRecyclerView();
+        searchBtn = findViewById(R.id.main_search_button);
+        searchEditText = findViewById(R.id.main_search_editText);
+
+
+        Query query = trackRef;
+        setUpRecyclerView(query);
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Query q = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
+                setUpRecyclerView(q);
+            }
+        });
     }
 
     @Override
@@ -56,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setUpRecyclerView() {
-        Query query = trackRef;
+    private void setUpRecyclerView(final Query query) {
         FirestoreRecyclerOptions<Track> options = new FirestoreRecyclerOptions.Builder<Track>().setQuery(query, Track.class).build();
         adapter = new TrackAdapter(options);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -68,17 +92,20 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new TrackAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                Track track = documentSnapshot.toObject(Track.class);
                 //get id for track
                 String id = documentSnapshot.getId();
                 Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
                 intent.putExtra("trackid", id);
                 startActivity(intent);
-                //display id for track in a toast
-                //Toast.makeText(getApplicationContext(),"id: " + id, Toast.LENGTH_LONG).show();
             }
         });
     }
+
+    /*public void searchName(View view) {
+        //String Tname = searchEditText.getText().toString();
+        Query q = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
+        setUpRecyclerView(q);
+    }*/
 
     @Override
     protected void onStart() {
@@ -97,4 +124,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         finish();
     }
+
 }

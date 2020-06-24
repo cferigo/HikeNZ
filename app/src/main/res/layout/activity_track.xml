@@ -222,7 +222,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/round_button"
                     android:text="Reviews"
-                    android:textColor="#ffffff" />
+                    android:textColor="#ffffff"
+                    android:onClick="reviewActivityButton"/>
             </LinearLayout>
     </LinearLayout>
 </ScrollView>

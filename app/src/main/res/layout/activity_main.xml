@@ -20,19 +20,19 @@
             android:id="@+id/main_search_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
+            android:layout_marginRight="80dp"
             android:layout_marginLeft="30dp"
             android:gravity="center"
             android:hint="Search"
             />
-        <TextView
+        <Button
             android:layout_margin="8dp"
             android:id="@+id/main_search_button"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
             android:background="@drawable/ic_search"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:onClick="searchName"/>
     </RelativeLayout>
 
 
