@@ -7,6 +7,7 @@
     android:background="@drawable/gradient_background"
     tools:context=".TrackActivity">
 
+
     <TextView
         android:id="@+id/track_name"
         android:layout_width="match_parent"
@@ -23,8 +24,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/track_name"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="50dp"
         android:background="#FFFFFF">
 
@@ -33,14 +32,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <fragment
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:id="@+id/map"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Map/location"
-                android:gravity="center"
-                android:layout_marginTop="70dp"
-                android:textSize="30sp"
+                android:layout_height="200dp"
                 />
+
 
             <RelativeLayout
                 android:layout_marginTop="50dp"

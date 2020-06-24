@@ -1,13 +1,22 @@
 package com.example.hikenz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -17,7 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import javax.annotation.Nullable;
 
-public class TrackActivity extends AppCompatActivity {
+public class TrackActivity extends AppCompatActivity implements OnMapReadyCallback {
     TextView name, time, distance, difficulty, description;
     ImageView dogFriendly;
     FirebaseFirestore fStore;
@@ -59,6 +68,35 @@ public class TrackActivity extends AppCompatActivity {
             }
         });
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.actionbar_profile:
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                return true;
+            case R.id.actionbar_home:
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    @Override
+    public void onMapReady(GoogleMap map) {
+        map.addMarker(new MarkerOptions()
+                .position(new LatLng(-33.852, 151.211))
+                .title("Marker"));
     }
     // need to create a save track button
 
