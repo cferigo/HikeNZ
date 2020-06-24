@@ -111,10 +111,10 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 GeoPoint geoPoint = documentSnapshot.getGeoPoint("Location");
                 double lat = geoPoint.getLatitude();
                 double lng = geoPoint.getLongitude();
-                name.setText(documentSnapshot.getString("Name"));
+                String nme = documentSnapshot.getString("Name");
                 map.addMarker(new MarkerOptions()
                         .position(new LatLng(lat , lng))
-                        .title(String.valueOf(name)));
+                        .title(String.valueOf(nme)));
             }
         });
 
