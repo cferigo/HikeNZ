@@ -71,6 +71,8 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Please Enter Correct Information",Toast.LENGTH_LONG).show();
         }
 
+        // add a accepts terms n conditions or privacy or whatever check box that must be checked before sign in
+
         // This creates a new user in firebase fireStore
         fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

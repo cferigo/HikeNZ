@@ -47,15 +47,14 @@ public class MainActivity extends AppCompatActivity {
         searchBtn = findViewById(R.id.main_search_button);
         searchEditText = findViewById(R.id.main_search_editText);
 
-
         Query query = trackRef;
         setUpRecyclerView(query);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Query q = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
-                setUpRecyclerView(q);
+                Query query = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
+                setUpRecyclerView(query);
             }
         });
     }
@@ -81,11 +80,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setUpRecyclerView(final Query query) {
+    private void setUpRecyclerView(Query query) {
         FirestoreRecyclerOptions<Track> options = new FirestoreRecyclerOptions.Builder<Track>().setQuery(query, Track.class).build();
         adapter = new TrackAdapter(options);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        //recyclerView.hasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
@@ -99,13 +97,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Toast.makeText(getApplicationContext(),"Error!" ,Toast.LENGTH_SHORT).show();
     }
 
-    /*public void searchName(View view) {
+    public void searchName(View view) {
         //String Tname = searchEditText.getText().toString();
         Query q = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
         setUpRecyclerView(q);
-    }*/
+    }
 
     @Override
     protected void onStart() {
@@ -124,5 +123,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         finish();
     }
+
 
 }
