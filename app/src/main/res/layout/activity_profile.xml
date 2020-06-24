@@ -7,6 +7,14 @@
     android:background="@drawable/gradient_background"
     tools:context=".ProfileActivity">
 
+    <RelativeLayout
+    android:id="@+id/profile_rl_1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:layout_margin="20dp"
+    android:paddingBottom="10dp"
+    >
 
 
     <ImageView
@@ -14,8 +22,9 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="135dp"
-        android:src="@drawable/acc_image" />
+        android:layout_marginLeft="110dp"
+        android:src="@drawable/acc_image"
+        />
 
     <TextView
         android:id="@+id/profile_fName"
@@ -53,4 +62,5 @@
         android:textSize="20sp"
         android:paddingLeft="2dp"
         android:drawableLeft="@drawable/ic_action_email" />
+    </RelativeLayout>
 </RelativeLayout>
