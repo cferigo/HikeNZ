@@ -52,8 +52,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         dogFriendly = findViewById(R.id.dogFriendly_ic);
         fStore = FirebaseFirestore.getInstance();
 
-
-
+        // populates track activity template with selected track information from passed track id
         DocumentReference docReference = fStore.collection("Tracks").document(value);
         docReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -73,10 +72,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 if (i == true) {
                     dogFriendly.setBackgroundResource(R.drawable.ic_yes);
                 }
-                GeoPoint geoPoint = documentSnapshot.getGeoPoint("Location");
-                double lat = geoPoint.getLatitude();
-                double lng = geoPoint.getLongitude();
-
             }
         });
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -125,6 +120,14 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         });
 
     }
+
+    // passes track id to new review activity
+    public void reviewActivityButton(View view) {
+        Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
+        intent.putExtra("trackid", id);
+        startActivity(intent);
+    }
+
     // need to create a save track button
 
 }

@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.sax.StartElementListener;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,9 +44,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setUpRecyclerView();
         searchBtn = findViewById(R.id.main_search_button);
         searchEditText = findViewById(R.id.main_search_editText);
+
+
+        Query query = trackRef;
+        setUpRecyclerView(query);
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Query q = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
+                setUpRecyclerView(q);
+            }
+        });
     }
 
     @Override
@@ -69,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setUpRecyclerView() {
-        Query query = trackRef;
+    private void setUpRecyclerView(final Query query) {
         FirestoreRecyclerOptions<Track> options = new FirestoreRecyclerOptions.Builder<Track>().setQuery(query, Track.class).build();
         adapter = new TrackAdapter(options);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -81,45 +92,20 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new TrackAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                Track track = documentSnapshot.toObject(Track.class);
                 //get id for track
                 String id = documentSnapshot.getId();
                 Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
                 intent.putExtra("trackid", id);
                 startActivity(intent);
-                //display id for track in a toast
-                //Toast.makeText(getApplicationContext(),"id: " + id, Toast.LENGTH_LONG).show();
             }
         });
-
-        // i got no idea what im doing with the search tracks stuff, but this crashes the app so yea
-        /*searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (searchEditText == null){
-                    Toast.makeText(getApplicationContext(),"Please enter search term" ,Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    db.collection("Tracks")
-                            .whereEqualTo(String.valueOf(searchEditText), true)
-                            .get()
-                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    if (task.isSuccessful()) {
-                                        for (QueryDocumentSnapshot document : task.getResult()) {
-                                            Toast.makeText(getApplicationContext(),"search kind of words" ,Toast.LENGTH_SHORT).show();
-                                        }
-                                    } else {
-                                        Toast.makeText(getApplicationContext(),"your project sucks" + searchEditText ,Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                }
-            }
-        });*/
     }
 
+    /*public void searchName(View view) {
+        //String Tname = searchEditText.getText().toString();
+        Query q = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
+        setUpRecyclerView(q);
+    }*/
 
     @Override
     protected void onStart() {
