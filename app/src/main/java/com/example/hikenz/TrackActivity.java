@@ -31,6 +31,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     TextView name, time, distance, difficulty, description;
     ImageView dogFriendly;
     FirebaseFirestore fStore;
+    String id = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         setContentView(R.layout.activity_track);
 
         String value = getIntent().getStringExtra("trackid");
+        id = value;
 
         name = findViewById(R.id.track_name);
         time = findViewById(R.id.track_time_textView);
@@ -74,14 +76,11 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
             }
         });
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -104,10 +103,21 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     }
 
     @Override
-    public void onMapReady(GoogleMap map) {
-        map.addMarker(new MarkerOptions()
-                .position(new LatLng(-33.852, 151.211))
-                .title(String.valueOf(name)));
+    public void onMapReady(final GoogleMap map) {
+        DocumentReference docReference = fStore.collection("Tracks").document(id);
+        docReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                GeoPoint geoPoint = documentSnapshot.getGeoPoint("Location");
+                double lat = geoPoint.getLatitude();
+                double lng = geoPoint.getLongitude();
+                name.setText(documentSnapshot.getString("Name"));
+                map.addMarker(new MarkerOptions()
+                        .position(new LatLng(lat , lng))
+                        .title(String.valueOf(name)));
+            }
+        });
+
     }
     // need to create a save track button
 
