@@ -23,6 +23,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.GeoPoint;
 
 import javax.annotation.Nullable;
 
@@ -46,6 +47,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         dogFriendly = findViewById(R.id.dogFriendly_ic);
         fStore = FirebaseFirestore.getInstance();
 
+
+
         DocumentReference docReference = fStore.collection("Tracks").document(value);
         docReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -65,12 +68,19 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 if (i == true) {
                     dogFriendly.setBackgroundResource(R.drawable.ic_yes);
                 }
+                GeoPoint geoPoint = documentSnapshot.getGeoPoint("Location");
+                double lat = geoPoint.getLatitude();
+                double lng = geoPoint.getLongitude();
+
             }
         });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,11 +102,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     public void onMapReady(GoogleMap map) {
         map.addMarker(new MarkerOptions()
                 .position(new LatLng(-33.852, 151.211))
-                .title("Marker"));
+                .title(String.valueOf(name)));
     }
     // need to create a save track button
 

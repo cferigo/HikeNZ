@@ -7,6 +7,35 @@
     android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+
+        <EditText
+            android:layout_alignParentLeft="true"
+            android:id="@+id/main_search_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+            android:hint="Search"
+            />
+        <TextView
+            android:layout_margin="8dp"
+            android:id="@+id/main_search_button"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:background="@drawable/ic_search"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+
     <Button
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
@@ -22,6 +51,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/r1"/>
 
 </RelativeLayout>

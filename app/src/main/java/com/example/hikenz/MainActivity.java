@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(),"id: " + id, Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
     @Override
