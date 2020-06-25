@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
+
         adapter.setOnItemClickListener(new TrackAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Toast.makeText(getApplicationContext(),"recycler view" ,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getApplicationContext(),"recycler view" ,Toast.LENGTH_SHORT).show();
     }
 
     /*private void setUpRecyclerViewSearch() {

@@ -92,11 +92,21 @@
         android:textColorHint="#000000"
         android:inputType="textPassword"/>
 
+    <CheckBox
+        android:id="@+id/register_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="70dp"
+        android:text="Accept Terms and Conditions"
+        android:layout_below="@+id/confirmPassword_TextField"/>
+
     <Button
         android:id="@+id/register_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/confirmPassword_TextField"
+        android:layout_below="@+id/register_checkBox"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/round_button"

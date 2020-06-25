@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText mFirstName, mLastName, mEmail, mPassword, mConfirmPassword;
     Button mRegisterBtn;
     TextView mBackBtn;
+    CheckBox mCheckBox;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -44,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         mEmail = findViewById(R.id.email_TextField);
         mPassword = findViewById(R.id.password_TextField);
         mConfirmPassword = findViewById(R.id.confirmPassword_TextField);
+        mCheckBox = findViewById(R.id.register_checkBox);
         mRegisterBtn = findViewById(R.id.register_Button);
         mBackBtn = findViewById(R.id.back_Link);
         fAuth = FirebaseAuth.getInstance();
@@ -57,6 +60,8 @@ public class RegisterActivity extends AppCompatActivity {
         final String password = mPassword.getText().toString().trim();
         final String firstName = mFirstName.getText().toString();
         final String lastName = mLastName.getText().toString();
+        boolean isChecked = mCheckBox.isChecked();
+        String cPwd = mConfirmPassword.getText().toString();
 
         final String fav = "Favorite Tracks: ";
         String[] favArray = fav.split("\\s*,\\s*");
@@ -67,40 +72,45 @@ public class RegisterActivity extends AppCompatActivity {
         final List<String> finished = Arrays.asList(finArray);
 
         // quick validation to ensure the fields are not empty
-        if(TextUtils.isEmpty(email) | TextUtils.isEmpty(password)){
-            Toast.makeText(getApplicationContext(),"Please Enter Correct Information",Toast.LENGTH_LONG).show();
+        if(email.isEmpty() | password.isEmpty() | firstName.isEmpty() | lastName.isEmpty()){
+            Toast.makeText(getApplicationContext(),"Please populate all fields",Toast.LENGTH_LONG).show();
         }
+        else if (!password.equals(cPwd)){
+            Toast.makeText(getApplicationContext(),"Passwords do not match",Toast.LENGTH_LONG).show();
+        }
+        else if (isChecked != true){
+            Toast.makeText(getApplicationContext(),"Please accept terms and conditions to create an account",Toast.LENGTH_LONG).show();
+        }
+        else {
+            // This creates a new user in firebase fireStore
+            fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        userID = fAuth.getCurrentUser().getUid();
+                        DocumentReference docReference = fStore.collection("Users").document(userID);
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("firstName", firstName);
+                        user.put("lastName", lastName);
+                        user.put("email", email);
+                        user.put("favorite", favorite);
+                        user.put("finished", finished);
 
-        // add a accepts terms n conditions or privacy or whatever check box that must be checked before sign in
-
-        // This creates a new user in firebase fireStore
-        fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    userID = fAuth.getCurrentUser().getUid();
-                    DocumentReference docReference = fStore.collection("Users").document(userID);
-                    Map<String, Object> user = new HashMap<>();
-                    user.put("firstName", firstName);
-                    user.put("lastName", lastName);
-                    user.put("email", email);
-                    user.put("favorite", favorite);
-                    user.put("finished", finished);
-
-                    docReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d("TAG", "onSuccess: user profile created for" + userID);
-                        }
-                    });
-                    Toast.makeText(RegisterActivity.this,"User Created",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        docReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("TAG", "onSuccess: user profile created for" + userID);
+                            }
+                        });
+                        Toast.makeText(RegisterActivity.this,"User Created",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else{
-                    Toast.makeText(getApplicationContext(),"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+            });
+        }
     }
 
     // on click event that takes user back to login activity

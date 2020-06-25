@@ -51,9 +51,9 @@ public class LoginActivity extends AppCompatActivity {
         String email = mEmail.getText().toString();
         String password = mPassword.getText().toString();
         if(email.isEmpty() | password.isEmpty()){
-            Toast.makeText(getApplicationContext(),"Please Enter Correct Information",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Please populate all fields",Toast.LENGTH_LONG).show();
         }
-        else if (!(email.isEmpty() | password.isEmpty())){
+        else {
         // authenticate the user
             fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     }
                     else{
-                        Toast.makeText(getApplicationContext(),"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Error! " + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 }
             });
