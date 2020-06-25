@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.GeoPoint;
@@ -34,7 +36,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     TextView name, time, distance, difficulty, description;
     ImageView dogFriendly;
     FirebaseFirestore fStore;
-    String id = "";
+    FirebaseAuth fAuth;
+    String userID;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +54,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         difficulty = findViewById(R.id.track_difficulty_textView);
         description = findViewById(R.id.track_description);
         dogFriendly = findViewById(R.id.dogFriendly_ic);
+        fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        userID = fAuth.getCurrentUser().getUid();
 
         // populates track activity template with selected track information from passed track id
         DocumentReference docReference = fStore.collection("Tracks").document(value);
@@ -77,9 +83,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
-
     }
 
     @Override
@@ -128,6 +131,25 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         startActivity(intent);
     }
 
+    // saves current track to users favorites list
+    public void saveFavoriteButton(View view) {
+        DocumentReference docRef = fStore.collection("Users").document(userID);
+        docRef.update("favorite" , FieldValue.arrayUnion(name.getText().toString()));
+        Toast.makeText(getApplicationContext(),"Track added to favorites ",Toast.LENGTH_SHORT).show();
+    }
+
+    public void saveFinishedButton(View view) {
+        DocumentReference docRef = fStore.collection("Users").document(userID);
+        docRef.update("finished" , FieldValue.arrayUnion(name.getText().toString()));
+        Toast.makeText(getApplicationContext(),"Track added to finished ",Toast.LENGTH_SHORT).show();
+    }
+
     // need to create a save track button
 
+    /*var washingtonRef = db.collection('cities').doc('DC');
+
+// Atomically add a new region to the "regions" array field.
+var arrUnion = washingtonRef.update({
+  regions: admin.firestore.FieldValue.arrayUnion('greater_virginia')
+});*/
 }

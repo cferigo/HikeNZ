@@ -223,6 +223,36 @@
                     android:textColor="#ffffff"
                     android:onClick="reviewActivityButton"/>
             </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/track_saveFav_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_button"
+                    android:text="favorites"
+                    android:textColor="#ffffff"
+                    android:onClick="saveFavoriteButton"/>
+
+                <Button
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/track_saveFin_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_button"
+                    android:text="finished"
+                    android:textColor="#ffffff"
+                    android:onClick="saveFinishedButton"/>
+            </LinearLayout>
     </LinearLayout>
 </ScrollView>
 </RelativeLayout>
