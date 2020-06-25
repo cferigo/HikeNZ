@@ -62,5 +62,39 @@
         android:textSize="20sp"
         android:paddingLeft="2dp"
         android:drawableLeft="@drawable/ic_action_email" />
+
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:layout_below="@+id/profile_email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/profile_favTracks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="place holder"
+                    android:textColor="#000000"
+                    android:textSize="16sp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/profile_finTracks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="place holder"
+                    android:textColor="#000000"
+                    android:textSize="16sp"/>
+            </RelativeLayout>
+        </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

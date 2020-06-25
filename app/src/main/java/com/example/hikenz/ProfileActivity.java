@@ -28,14 +28,12 @@ import java.util.List;
 import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
-    TextView firstName, lastName, email;
+    TextView firstName, lastName, email, favTrack, finTrack;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
-    ArraySet<String> favTracks;
-    //List<String> favorites;
-    //ArrayList<ArrayList<String>> favTrackArray;
-    Map<Integer, String> favorites;
+    ArrayList<String> favTracksAList;
+    ArrayList<String> finTracksAList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +43,11 @@ public class ProfileActivity extends AppCompatActivity {
         firstName = findViewById(R.id.profile_fName);
         lastName = findViewById(R.id.profile_lName);
         email = findViewById(R.id.profile_email);
-        //favorites = findViewById(R.id.profile_favorite);
+        finTrack = findViewById(R.id.profile_finTracks);
+        favTrack = findViewById(R.id.profile_favTracks);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
-
-       // getFavTracks();
 
         // Getting the current user
         final DocumentReference docReference = fStore.collection("Users").document(userID);
@@ -63,39 +60,21 @@ public class ProfileActivity extends AppCompatActivity {
                 firstName.setText(documentSnapshot.getString("firstName"));
                 lastName.setText(documentSnapshot.getString("lastName"));
                 email.setText(documentSnapshot.getString("email"));
-
-                /*favorites.(documentSnapshot.get("Favorites"));
-                favorites = Collections.(documentSnapshot.get("favorites"));
-                Toast.makeText(getApplicationContext(),"favorites list" + favTrackArray ,Toast.LENGTH_SHORT).show();*/
-            }
-        });
-    }
-
-   /* public void getFavTracks(){
-        DocumentReference docRef = fStore.collection("Users").document(userID);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot documentSnapshot = task.getResult();
-                    if (documentSnapshot != null) {
-                        Log.d("TAG", "DocumentSnapshot data: " + task.getResult().getData());
-                        for (Object item : task.getResult().getData().values())
-                            favTracks.add(item.toString());
-                        Toast.makeText(getApplicationContext(), "favorites list" + favTracks, Toast.LENGTH_SHORT).show();
-                    }
-                    if (documentSnapshot != null) {
-                        Log.d("TAG", "DocumentSnapshot data: " + task.getResult().getData());
-
-                    } else {
-                        Log.d("TAG", "No such document");
-                    }
-                } else {
-                    Log.d("TAG", "get failed with ", task.getException());
+                favTracksAList = (ArrayList<String>) documentSnapshot.get("favorite");
+                //Do what you need to do with your ArrayList
+                for (String s : favTracksAList) {
+                    finTrack.setText(s);
+                    Log.d("TAG", s);
+                }
+                finTracksAList = (ArrayList<String>) documentSnapshot.get("finished");
+                //Do what you need to do with your ArrayList
+                for (String s : finTracksAList) {
+                    favTrack.setText(s);
+                    Log.d("TAG", s);
                 }
             }
         });
-    }*/
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
