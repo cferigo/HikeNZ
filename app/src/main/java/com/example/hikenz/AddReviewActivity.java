@@ -62,7 +62,7 @@ public class AddReviewActivity extends AppCompatActivity {
         DocumentReference docReference = fStore.collection("Tracks").document(id).collection("Reviews").document();
         Map<String, Object> review = new HashMap<>();
         review.put("firstName", nme);
-        review.put("Review", rev);
+        review.put("review", rev);
 
         docReference.set(review).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

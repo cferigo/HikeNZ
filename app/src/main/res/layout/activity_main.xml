@@ -24,7 +24,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:hint="Search" />
+            android:hint="Search"
+            android:onClick="searchName"/>
 
         <Button
             android:layout_margin="8dp"
