@@ -17,7 +17,7 @@ import com.google.firebase.firestore.Query;
 
 public class ReviewActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference reviewRef = db.collection("Tracks");
+    private CollectionReference reviewRef;
 
 
     private ReviewAdapter adapter;
@@ -30,10 +30,9 @@ public class ReviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_review);
         Query query = reviewRef;
         setUpRecyclerView(query);
-        //Toast.makeText(getApplicationContext(), reviewRef, Toast.LENGTH_LONG).show();
         String value = getIntent().getStringExtra("trackid");
         id = value;
-        //reviewRef = db.collection("Tracks").document(id).collection("Reviews");
+        reviewRef = db.collection("Tracks").document(id).collection("Reviews");
         addRevActivityBtn = findViewById(R.id.addRev_buttonLink);
         addRevActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
