@@ -138,18 +138,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         Toast.makeText(getApplicationContext(),"Track added to favorites ",Toast.LENGTH_SHORT).show();
     }
 
+    // maybe try a check box to add or remove tracks from favorites or finished?
+
+    // saves current track to users finished list
     public void saveFinishedButton(View view) {
         DocumentReference docRef = fStore.collection("Users").document(userID);
         docRef.update("finished" , FieldValue.arrayUnion(name.getText().toString()));
         Toast.makeText(getApplicationContext(),"Track added to finished ",Toast.LENGTH_SHORT).show();
     }
-
-    // need to create a save track button
-
-    /*var washingtonRef = db.collection('cities').doc('DC');
-
-// Atomically add a new region to the "regions" array field.
-var arrUnion = washingtonRef.update({
-  regions: admin.firestore.FieldValue.arrayUnion('greater_virginia')
-});*/
 }

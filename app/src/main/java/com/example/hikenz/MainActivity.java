@@ -47,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
         searchBtn = findViewById(R.id.main_search_button);
         searchEditText = findViewById(R.id.main_search_editText);
 
+        Query query = trackRef;
         setUpRecyclerView(query);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Query q = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
-                //setUpRecyclerView(q);
-                //setUpRecyclerViewSearch();
+                Query q = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
+                setUpRecyclerView(q);
                 Toast.makeText(getApplicationContext(),"search pressed" ,Toast.LENGTH_SHORT).show();
             }
         });
@@ -82,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpRecyclerView(Query query) {
+
+        if(adapter != null){
+            adapter.stopListening();
+        }
+
+
         FirestoreRecyclerOptions<Track> options = new FirestoreRecyclerOptions.Builder<Track>().setQuery(query, Track.class).build();
         adapter = new TrackAdapter(options);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -99,36 +105,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        adapter.startListening();
        // Toast.makeText(getApplicationContext(),"recycler view" ,Toast.LENGTH_SHORT).show();
     }
-
-    /*private void setUpRecyclerViewSearch() {
-        Query q = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
-        FirestoreRecyclerOptions<Track> options = new FirestoreRecyclerOptions.Builder<Track>().setQuery(query, Track.class).build();
-        adapter = new TrackAdapter(options);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new TrackAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                //get id for track
-                String id = documentSnapshot.getId();
-                Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
-                intent.putExtra("trackid", id);
-                startActivity(intent);
-            }
-        });
-        Toast.makeText(getApplicationContext(),"recycler view search" ,Toast.LENGTH_SHORT).show();
-    }*/
-
-    /*public void searchName(View view) {
-        //String Tname = searchEditText.getText().toString();
-        query = trackRef.whereEqualTo("Name", "Goldie Bush Walkway");
-        setUpRecyclerView(query);
-        Toast.makeText(getApplicationContext(),"search clicked" ,Toast.LENGTH_SHORT).show();
-    }*/
 
     @Override
     protected void onStart() {

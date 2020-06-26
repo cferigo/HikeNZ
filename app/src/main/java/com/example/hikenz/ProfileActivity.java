@@ -52,7 +52,6 @@ public class ProfileActivity extends AppCompatActivity {
         // Getting the current user
         final DocumentReference docReference = fStore.collection("Users").document(userID);
 
-
         // replacing the place holder text views with the current users information
        docReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -61,16 +60,16 @@ public class ProfileActivity extends AppCompatActivity {
                 lastName.setText(documentSnapshot.getString("lastName"));
                 email.setText(documentSnapshot.getString("email"));
                 favTracksAList = (ArrayList<String>) documentSnapshot.get("favorite");
-                //Do what you need to do with your ArrayList
+                //think that needs to be made into a loop to print each value in the array?
                 for (String s : favTracksAList) {
                     finTrack.setText(s);
                     Log.d("TAG", s);
                 }
                 finTracksAList = (ArrayList<String>) documentSnapshot.get("finished");
-                //Do what you need to do with your ArrayList
-                for (String s : finTracksAList) {
-                    favTrack.setText(s);
-                    Log.d("TAG", s);
+                for (String j : finTracksAList) {
+                    favTrack.setText(j);
+                    Log.d("TAG", j);
+                    Toast.makeText(getApplicationContext(), j,Toast.LENGTH_SHORT).show();
                 }
             }
         });
