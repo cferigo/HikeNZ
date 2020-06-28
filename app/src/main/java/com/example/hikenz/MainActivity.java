@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.sax.StartElementListener;
 import android.text.Editable;
@@ -243,4 +244,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         showNameSearch.setVisibility(View.GONE);
     }
 
+    @Override
+    public void onLocationChanged(Location location) {
+        
+    }
 }
