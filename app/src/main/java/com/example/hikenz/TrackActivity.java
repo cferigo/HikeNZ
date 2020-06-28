@@ -38,15 +38,16 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     String userID;
-    String id;
+    //String id;
+    String value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track);
 
-        String value = getIntent().getStringExtra("trackid");
-        id = value;
+        value = getIntent().getStringExtra("trackid");
+        //id = value;
 
         name = findViewById(R.id.track_name);
         time = findViewById(R.id.track_time_textView);
@@ -108,7 +109,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
     @Override
     public void onMapReady(final GoogleMap map) {
-        DocumentReference docReference = fStore.collection("Tracks").document(id);
+        DocumentReference docReference = fStore.collection("Tracks").document(value);
         docReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -127,7 +128,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     // passes track id to new review activity
     public void reviewActivityButton(View view) {
         Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
-        intent.putExtra("trackid", id);
+        intent.putExtra("trackid", value);
         startActivity(intent);
     }
 

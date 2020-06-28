@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
-    TextView firstName, lastName, email, favTrack, finTrack;
+    TextView firstName, lastName, email, finTrack, favTrack;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -60,17 +62,18 @@ public class ProfileActivity extends AppCompatActivity {
                 lastName.setText(documentSnapshot.getString("lastName"));
                 email.setText(documentSnapshot.getString("email"));
                 favTracksAList = (ArrayList<String>) documentSnapshot.get("favorite");
-                //think that needs to be made into a loop to print each value in the array?
+                StringBuilder favStringBuilder = new StringBuilder();
                 for (String s : favTracksAList) {
-                    finTrack.setText(s);
-                    Log.d("TAG", s);
+                    favStringBuilder.append(s + "\n");
                 }
+                favTrack.setText(favStringBuilder.toString());
+
                 finTracksAList = (ArrayList<String>) documentSnapshot.get("finished");
-                for (String j : finTracksAList) {
-                    favTrack.setText(j);
-                    Log.d("TAG", j);
-                    Toast.makeText(getApplicationContext(), j,Toast.LENGTH_SHORT).show();
+                StringBuilder finStringBuilder = new StringBuilder();
+                for (String s : finTracksAList) {
+                    finStringBuilder.append(s + "\n");
                 }
+                finTrack.setText(finStringBuilder.toString());
             }
         });
     }

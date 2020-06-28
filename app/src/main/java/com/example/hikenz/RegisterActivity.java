@@ -62,14 +62,9 @@ public class RegisterActivity extends AppCompatActivity {
         final String lastName = mLastName.getText().toString();
         boolean isChecked = mCheckBox.isChecked();
         String cPwd = mConfirmPassword.getText().toString();
-
-        final String fav = "Favorite Tracks: ";
-        String[] favArray = fav.split("\\s*,\\s*");
-        final List<String> favorite = Arrays.asList(favArray);
-
-        final String fin = "Finished Tracks: ";
-        String[] finArray = fin.split("\\s*,\\s*");
-        final List<String> finished = Arrays.asList(finArray);
+        // adds 2 empty lists to the users profile
+        final List<String> favorite = Arrays.asList();
+        final List<String> finished = Arrays.asList();
 
         // quick validation to ensure the fields are not empty
         if(email.isEmpty() | password.isEmpty() | firstName.isEmpty() | lastName.isEmpty()){

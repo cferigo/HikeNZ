@@ -7,13 +7,20 @@
     android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/r1"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+        android:id="@+id/main_searchName_layout"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff">
+        android:background="@drawable/round_background"
+        android:layout_margin="8dp"
+        android:visibility="gone">
 
         <EditText
             android:layout_alignParentLeft="true"
@@ -24,8 +31,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:hint="Search"
-            android:onClick="searchName"/>
+            android:hint="Search" />
 
         <Button
             android:layout_margin="8dp"
@@ -36,36 +42,173 @@
             android:layout_alignParentRight="true" />
     </RelativeLayout>
 
-    <Button
-        android:layout_below="@+id/r1"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/showTracks_Button"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/main_searchDifficulty_layout"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:text="All Tracks"
-        android:textColor="#ffffff"
-        android:onClick="showAllTracks"/>
+        android:padding="4dp"
+        android:visibility="gone">
 
-    <Button
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/logout_Button"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/main_searchBeginner_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Beginner"
+            android:textColor="#FFFFFf"
+            android:layout_margin="4dp"
+            android:background="@drawable/round_button"/>
+
+        <Button
+            android:id="@+id/main_searchIntermediate_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Intermediate"
+            android:textColor="#FFFFFf"
+            android:layout_margin="4dp"
+            android:background="@drawable/round_button"/>
+
+        <Button
+            android:id="@+id/main_searchAdvanced_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Advanced"
+            android:textColor="#FFFFFf"
+            android:layout_margin="4dp"
+            android:background="@drawable/round_button"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_searchDistance_layout"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:text="Logout"
-        android:textColor="#ffffff"
-        android:onClick="Logout"/>
+        android:background="@drawable/round_background"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/main_arrowLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_left"
+            android:layout_toLeftOf="@+id/main_distanceCounter_textView"
+            android:onClick="decreaseDistance"/>
+
+        <TextView
+            android:id="@+id/main_distanceCounter_textView"
+            android:layout_centerInParent="true"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textColor="#000000"
+            android:textSize="30sp"/>
+
+        <Button
+            android:id="@+id/main_arrowRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_right"
+            android:layout_toRightOf="@+id/main_distanceCounter_textView"
+            android:onClick="increaseDistance"/>
+
+        <Button
+            android:id="@+id/main_searchDistance_button"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_search"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/showTracks_Button"/>
+        android:layout_height="match_parent"/>
+</LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <Button
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/logout_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:text="Logout"
+            android:textColor="#ffffff"
+            android:onClick="Logout"/>
+
+        <Button
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/main_searchOptions_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:text="Search By"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:onClick="searchOptions" />
+
+        <Button
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:id="@+id/main_searchOptionDifficulty_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/main_searchOptions_Button"
+            android:background="@drawable/round_button"
+            android:text="Difficulty"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:onClick="searchOptionDifficulty"
+            android:visibility="gone"/>
+
+        <Button
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
+            android:id="@+id/main_searchOptionDistance_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/main_searchOptionDifficulty_Button"
+            android:background="@drawable/round_button"
+            android:text="Distance"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:onClick="searchOptionDistance"
+            android:visibility="gone"/>
+
+        <Button
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
+            android:id="@+id/main_searchOptionName_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/main_searchOptionDistance_Button"
+            android:background="@drawable/round_button"
+            android:text="Name"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:onClick="searchOptionName"
+            android:visibility="gone"/>
+    </RelativeLayout>
 </RelativeLayout>

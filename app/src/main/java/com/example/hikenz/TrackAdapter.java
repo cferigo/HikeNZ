@@ -44,7 +44,7 @@ public class TrackAdapter extends FirestoreRecyclerAdapter<Track, TrackAdapter.T
 
     @Override
     public Filter getFilter() {
-        return null; 
+        return null;
     }
 
     class TrackHolder extends RecyclerView.ViewHolder {
