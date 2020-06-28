@@ -20,7 +20,7 @@ public class ReviewAdapter extends FirestoreRecyclerAdapter<Review, ReviewAdapte
 
     @Override
     protected void onBindViewHolder(@NonNull ReviewHolder reviewHolder, int i, @NonNull Review model) {
-        reviewHolder.textViewName.setText(model.getFirstname());
+        reviewHolder.textViewName.setText(model.getFirstName());
         reviewHolder.textViewreview.setText(model.getReview());
     }
 

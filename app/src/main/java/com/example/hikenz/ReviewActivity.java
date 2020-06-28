@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -15,6 +17,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.Objects;
+
 public class ReviewActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference reviewRef;
@@ -22,38 +26,37 @@ public class ReviewActivity extends AppCompatActivity {
 
     private ReviewAdapter adapter;
     Button addRevActivityBtn;
-    String id;
+    String value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
-        Query query = reviewRef;
-        setUpRecyclerView(query);
-        String value = getIntent().getStringExtra("trackid");
-        id = value;
-        reviewRef = db.collection("Tracks").document(id).collection("Reviews");
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            reviewRef = db.collection("Tracks").document(Objects.requireNonNull(getIntent().getStringExtra("trackid"))).collection("Reviews");
+        }
+
+        setUpRecyclerView();
+        value = getIntent().getStringExtra("trackid");
         addRevActivityBtn = findViewById(R.id.addRev_buttonLink);
         addRevActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddReviewActivity.class);
-                intent.putExtra("trackid", id);
+                intent.putExtra("trackid", value);
                 startActivity(intent);
             }
         });
     }
-    private void setUpRecyclerView(Query query) {
-
-
+    private void setUpRecyclerView() {
+        Query query = reviewRef;
         FirestoreRecyclerOptions<Review> options = new FirestoreRecyclerOptions.Builder<Review>().setQuery(query, Review.class).build();
-
         adapter = new ReviewAdapter(options);
-
         RecyclerView recyclerView = findViewById(R.id.review_recycler_view);
-        //recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
     }
 
     @Override

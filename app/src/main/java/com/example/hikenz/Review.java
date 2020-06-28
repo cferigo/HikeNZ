@@ -1,20 +1,20 @@
 package com.example.hikenz;
 
 public class Review {
-    String firstname, review;
+    String firstName, review;
 
     public Review()
     {
         //Firebase needs empty constructor to work
     }
 
-    public Review(String firstname, String review) {
-        this.firstname = firstname;
+    public Review(String firstName, String review) {
+        this.firstName = firstName;
         this.review = review;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     public String getReview() {

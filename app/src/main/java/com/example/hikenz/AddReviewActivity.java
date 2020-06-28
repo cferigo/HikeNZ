@@ -28,7 +28,7 @@ public class AddReviewActivity extends AppCompatActivity {
     TextView fName;
     EditText fReview;
     String userID;
-    String id = "";
+    String value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,8 @@ public class AddReviewActivity extends AppCompatActivity {
         fName = findViewById(R.id.addRev_firstName_textView);
         fReview = findViewById(R.id.addRev_review_editTExt);
 
-        String value = getIntent().getStringExtra("trackid");
-        id = value;
+        value = getIntent().getStringExtra("trackid");
+
 
         // Getting the current user
         final DocumentReference docReference = fStore.collection("Users").document(userID);
@@ -59,7 +59,7 @@ public class AddReviewActivity extends AppCompatActivity {
     public void addReview(View view) {
         String nme = fName.getText().toString();
         String rev = fReview.getText().toString();
-        DocumentReference docReference = fStore.collection("Tracks").document(id).collection("Reviews").document();
+        DocumentReference docReference = fStore.collection("Tracks").document(value).collection("Reviews").document();
         Map<String, Object> review = new HashMap<>();
         review.put("firstName", nme);
         review.put("review", rev);
@@ -71,6 +71,8 @@ public class AddReviewActivity extends AppCompatActivity {
             }
         });
         Toast.makeText(AddReviewActivity.this,"Review Created",Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getApplicationContext(), ReviewActivity.class));
+        Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
+        intent.putExtra("trackid", value);
+        startActivity(intent);
     }
 }
