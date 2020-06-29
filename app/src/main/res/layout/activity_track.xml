@@ -209,7 +209,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_button"
                 android:text="Photos"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:onClick="photosButton"/>
 
                 <Button
                     android:layout_marginTop="20dp"

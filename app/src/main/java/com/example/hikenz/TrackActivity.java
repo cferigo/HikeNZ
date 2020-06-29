@@ -147,4 +147,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         docRef.update("finished" , FieldValue.arrayUnion(name.getText().toString()));
         Toast.makeText(getApplicationContext(),"Track added to finished ",Toast.LENGTH_SHORT).show();
     }
+
+    public void photosButton(View view) {
+        Intent intent = new Intent(getApplicationContext(), AddPhotoActivity.class);
+        startActivity(intent);
+    }
 }
