@@ -29,13 +29,14 @@
         android:layout_height="wrap_content"
         android:background="@drawable/round_button"
         android:text="BACK"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/review_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        
+
         />
 
 </RelativeLayout>
