@@ -185,9 +185,7 @@ public class MainActivity extends AppCompatActivity {
                     int latestLocationIndex = locationResult.getLocations().size() - 1;
                     double userLatitude = locationResult.getLocations().get(latestLocationIndex).getLatitude();
                     double userLongitude = locationResult.getLocations().get(latestLocationIndex).getLongitude();
-                    String i = Double.toString(userLatitude);
-                    String j = Double.toString(userLongitude);
-                   // Toast.makeText(this, "Users Location: " + i +","+j, Toast.LENGTH_SHORT).show();
+                    // needs to be converted into an address
                 }
             }
         }, Looper.getMainLooper());
@@ -349,23 +347,4 @@ public class MainActivity extends AppCompatActivity {
         showNameSearch.setVisibility(View.GONE);
         showNearMeSearch.setVisibility(View.GONE);
     }
-
-   /* public void getLocation() {
-        try {
-            locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED) {
-                return;
-            }
-            locationManager.requestLocationUpdates(GPS_PROVIDER, 5000, 5, (android.location.LocationListener) MainActivity.this);
-        }catch (Exception e ){
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-        Toast.makeText(MainActivity.this,"" + location.getLatitude()+","+location.getLongitude(),Toast.LENGTH_SHORT).show();
-    }*/
 }

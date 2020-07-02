@@ -14,23 +14,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 import java.util.Objects;
 
+import javax.annotation.Nullable;
+
 public class ReviewActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference reviewRef;
-
-
     private ReviewAdapter adapter;
-    Button addRevActivityBtn;
-    String value;
+    Button addRevActivityBtn, backBtn;
+    String value, title;
+    TextView titleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +47,26 @@ public class ReviewActivity extends AppCompatActivity {
             reviewRef = db.collection("Tracks").document(Objects.requireNonNull(getIntent().getStringExtra("trackid"))).collection("Reviews");
         }
 
+        titleView = findViewById(R.id.review_title);
+
         setUpRecyclerView();
         value = getIntent().getStringExtra("trackid");
+        title = getIntent().getStringExtra("trackname");
+        titleView.setText(title + "\n" + "Reviews");
         addRevActivityBtn = findViewById(R.id.addRev_buttonLink);
+        backBtn = findViewById(R.id.review_backBtn);
         addRevActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddReviewActivity.class);
+                intent.putExtra("trackid", value);
+                startActivity(intent);
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
                 intent.putExtra("trackid", value);
                 startActivity(intent);
             }

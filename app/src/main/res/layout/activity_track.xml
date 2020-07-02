@@ -175,6 +175,47 @@
                     android:background="@drawable/ic_no" />
         </RelativeLayout>
 
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/track_saveFav_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_background"
+                    android:text="favorites"
+                    android:textColor="#000000"
+                    android:onClick="saveFavoriteButton"/>
+
+                <View
+                    android:id="@+id/div_3"
+                    android:layout_width="2dp"
+                    android:layout_height="40dp"
+                    android:background="#b0b0b0"
+                    android:layout_toLeftOf="@+id/id_1"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"/>
+
+                <Button
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/track_saveFin_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_background"
+                    android:text="finished"
+                    android:textColor="#000000"
+                    android:onClick="saveFinishedButton"/>
+            </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -223,37 +264,10 @@
                     android:text="Reviews"
                     android:textColor="#ffffff"
                     android:onClick="reviewActivityButton"/>
-            </LinearLayout>
-            <LinearLayout
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <Button
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginRight="20dp"
-                    android:id="@+id/track_saveFav_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/round_button"
-                    android:text="favorites"
-                    android:textColor="#ffffff"
-                    android:onClick="saveFavoriteButton"/>
 
-                <Button
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:id="@+id/track_saveFin_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/round_button"
-                    android:text="finished"
-                    android:textColor="#ffffff"
-                    android:onClick="saveFinishedButton"/>
             </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
 </RelativeLayout>

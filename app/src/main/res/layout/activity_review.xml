@@ -7,10 +7,22 @@
     android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/review_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="place holder"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff" />
+
     <Button
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginRight="20dp"
         android:id="@+id/addRev_buttonLink"
         android:layout_width="wrap_content"
@@ -22,9 +34,9 @@
     <Button
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="20dp"
-        android:id="@+id/Back_buttonLink"
+        android:id="@+id/review_backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/round_button"
@@ -33,10 +45,10 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/review_title"
         android:id="@+id/review_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        />
+        android:layout_marginBottom="75dp"/>
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,7 +39,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     String userID;
-    //String id;
+    String tName;
     String value;
 
     @Override
@@ -47,7 +48,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         setContentView(R.layout.activity_track);
 
         value = getIntent().getStringExtra("trackid");
-        //id = value;
 
         name = findViewById(R.id.track_name);
         time = findViewById(R.id.track_time_textView);
@@ -79,6 +79,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 if (i == true) {
                     dogFriendly.setBackgroundResource(R.drawable.ic_yes);
                 }
+                tName = documentSnapshot.getString("Name");
             }
         });
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -129,6 +130,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     public void reviewActivityButton(View view) {
         Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
         intent.putExtra("trackid", value);
+        intent.putExtra("trackname", tName);
         startActivity(intent);
     }
 
