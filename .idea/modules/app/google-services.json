@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "942273415466",
+    "firebase_url": "https://hikenz-2a028.firebaseio.com",
+    "project_id": "hikenz-2a028",
+    "storage_bucket": "hikenz-2a028.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942273415466:android:fa860f1069223857827653",
+        "android_client_info": {
+          "package_name": "com.example.hikenz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942273415466-5v84i9nhed29fksvhpiagd6up7cj4cfa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hikenz",
+            "certificate_hash": "3e1015c556c062cd97f5e0cffadd56ef608b962c"
+          }
+        },
+        {
+          "client_id": "942273415466-sa2ctnnt12tqftfm1rr15fmkr1ege9a7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_kSWF5h9iV5nlwTVffw4NjvZcV3U3clM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942273415466-sa2ctnnt12tqftfm1rr15fmkr1ege9a7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
