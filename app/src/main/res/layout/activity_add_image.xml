@@ -10,7 +10,10 @@
         android:id="@+id/button_choose_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose file"/>
+        android:text="Choose file"
+        android:background="@drawable/round_button"
+        android:textColor="#ffffff"
+        android:padding="10dp"/>
 
     <EditText
         android:id="@+id/edit_text_file_name"
@@ -48,7 +51,9 @@
         android:text="Upload"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick=""
+        android:background="@drawable/round_button"
+        android:textColor="#ffffff"
+
 
         />
 
