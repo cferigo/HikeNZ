@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewDebug;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,11 +24,16 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddPhotoActivity extends AppCompatActivity {
 
@@ -41,9 +48,11 @@ public class AddPhotoActivity extends AppCompatActivity {
     private Uri mImageUri;
 
     private StorageReference mStorageRef;
-    private DatabaseReference mDatabaseRef;
-
+    //private DatabaseReference mDatabaseRef; //1
+    FirebaseFirestore fStore;
     private StorageTask mUploadTask;
+
+    String value;
 
 
 
@@ -59,11 +68,12 @@ public class AddPhotoActivity extends AppCompatActivity {
         mEditTextFileName = findViewById(R.id.edit_text_file_name);
         mImageView = findViewById(R.id.image_view_upload);
         mProgressBar = findViewById(R.id.progress_bar);
+        value = getIntent().getStringExtra("trackid");
 
         //uploads file to be created in database?
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
-
+        //mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
+        fStore = FirebaseFirestore.getInstance();
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +130,8 @@ public class AddPhotoActivity extends AppCompatActivity {
     }
 
     private void uploadFile() {
+        final String t = mEditTextFileName.getText().toString().trim();
+        final String j = mImageUri.toString();
         if (mImageUri != null) {
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
                 + "." + getFileExtension(mImageUri));
@@ -129,6 +141,7 @@ public class AddPhotoActivity extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
                             Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
                                 @Override
@@ -137,11 +150,19 @@ public class AddPhotoActivity extends AppCompatActivity {
                                 }
                             }, 500);
                             //shows success message to user and creates a new entry in database with unique id
-                            Toast.makeText(AddPhotoActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
-                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),
+                            //Toast.makeText(AddPhotoActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
+                            DocumentReference docRef = fStore.collection("Tracks").document(value).collection("Images").document();
+                            Map<String, Object>image = new HashMap<>();
+                            image.put("title", t);
+                            image.put("path", j);
+                            docRef.set(image);
+
+                            /*Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),
                                     taskSnapshot.getUploadSessionUri().toString());
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(upload);
+                            */
+
                         }
                     })
                     //Displaying Error message to user

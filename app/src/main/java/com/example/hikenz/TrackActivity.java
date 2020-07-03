@@ -152,6 +152,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
     public void photosButton(View view) {
         Intent intent = new Intent(getApplicationContext(), AddPhotoActivity.class);
+        intent.putExtra("trackid", value);
         startActivity(intent);
     }
 }
