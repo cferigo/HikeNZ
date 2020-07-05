@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ import javax.annotation.Nullable;
 
 public class TrackActivity extends AppCompatActivity implements OnMapReadyCallback {
     TextView name, time, distance, difficulty, description;
+    RelativeLayout mapView;
     ImageView dogFriendly;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
@@ -54,6 +57,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
+        mapView = findViewById(R.id.view1);
 
         // populates track activity template with selected track information from passed track id
         DocumentReference docReference = fStore.collection("Tracks").document(value);
@@ -81,6 +85,13 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mapView.setVisibility(View.GONE);
+        } else {
+            mapView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
