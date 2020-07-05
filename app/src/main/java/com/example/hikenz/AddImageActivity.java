@@ -35,7 +35,7 @@ public class AddImageActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    private Button mButtonChooseImage, mButtonUpload;
+    private Button mButtonChooseImage, mButtonUpload, bkBtn;
     private TextView mTextViewShowUploads;
     private EditText mEditTextFileName;
     private ImageView mImageView;
@@ -64,18 +64,30 @@ public class AddImageActivity extends AppCompatActivity {
         mEditTextFileName = findViewById(R.id.edit_text_file_name);
         mImageView = findViewById(R.id.image_view_upload);
         mProgressBar = findViewById(R.id.progress_bar);
+        bkBtn = findViewById(R.id.image_backBtn);
         value = getIntent().getStringExtra("trackid");
 
         //uploads file to be created in database?
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         //mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
         fStore = FirebaseFirestore.getInstance();
+
+        bkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
+                intent.putExtra("trackid", value);
+                startActivity(intent);
+            }
+        });
+
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openFileChooser();
             }
         });
+
 
         mButtonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,12 +101,15 @@ public class AddImageActivity extends AppCompatActivity {
             }
         });
 
+
         mTextViewShowUploads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             openImagesActivity();
             }
         });
+
+
 
     }
 
@@ -146,7 +161,7 @@ public class AddImageActivity extends AppCompatActivity {
                                 }
                             }, 500);
                             //shows success message to user and creates a new entry in database with unique id
-                            //Toast.makeText(AddPhotoActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddImageActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
                             DocumentReference docRef = fStore.collection("Tracks").document(value).collection("Images").document();
                             Map<String, Object>image = new HashMap<>();
                             image.put("title", t);
@@ -188,4 +203,5 @@ public class AddImageActivity extends AppCompatActivity {
         intent.putExtra("trackid", value);
         startActivity(intent);
     }
+
 }
