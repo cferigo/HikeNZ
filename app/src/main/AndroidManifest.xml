@@ -13,7 +13,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity android:name=".ImagesActivity"></activity>
-        <activity android:name=".AddPhotoActivity" />
+        <activity android:name=".AddImageActivity" />
         <activity android:name=".AddReviewActivity" />
         <activity android:name=".ReviewActivity" />
         <activity android:name=".TrackActivity" />
