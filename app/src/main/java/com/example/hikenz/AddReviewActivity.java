@@ -57,22 +57,27 @@ public class AddReviewActivity extends AppCompatActivity {
     }
 
     public void addReview(View view) {
+
         String nme = fName.getText().toString();
         String rev = fReview.getText().toString();
-        DocumentReference docReference = fStore.collection("Tracks").document(value).collection("Reviews").document();
-        Map<String, Object> review = new HashMap<>();
-        review.put("firstName", nme);
-        review.put("review", rev);
+        if(rev.isEmpty()) {
+            fReview.setError("Please write a Review");
+        }else {
+            DocumentReference docReference = fStore.collection("Tracks").document(value).collection("Reviews").document();
+            Map<String, Object> review = new HashMap<>();
+            review.put("firstName", nme);
+            review.put("review", rev);
 
-        docReference.set(review).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Log.d("TAG", "onSuccess: review created" );
-            }
-        });
-        Toast.makeText(AddReviewActivity.this,"Review Created",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
-        intent.putExtra("trackid", value);
-        startActivity(intent);
+            docReference.set(review).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d("TAG", "onSuccess: review created");
+                }
+            });
+            Toast.makeText(AddReviewActivity.this, "Review Created", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
+            intent.putExtra("trackid", value);
+            startActivity(intent);
+        }
     }
 }

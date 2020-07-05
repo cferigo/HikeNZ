@@ -189,6 +189,7 @@ public class AddPhotoActivity extends AppCompatActivity {
     }
     private void openImagesActivity() {
         Intent intent = new Intent(this, ImagesActivity.class);
+        intent.putExtra("trackid", value);
         startActivity(intent);
     }
 }

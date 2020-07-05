@@ -50,8 +50,11 @@ public class LoginActivity extends AppCompatActivity {
     public void Login(View view) {
         String email = mEmail.getText().toString();
         String password = mPassword.getText().toString();
-        if(email.isEmpty() | password.isEmpty()){
-            Toast.makeText(getApplicationContext(),"Please populate all fields",Toast.LENGTH_LONG).show();
+        if(email.isEmpty()){
+            mEmail.setError("Please populate all fields");
+
+        }else if (password.isEmpty()){
+            mPassword.setError("Please populate all fields");
         }
         else {
         // authenticate the user

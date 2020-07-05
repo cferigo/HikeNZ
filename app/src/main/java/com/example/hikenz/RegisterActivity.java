@@ -67,14 +67,28 @@ public class RegisterActivity extends AppCompatActivity {
         final List<String> finished = Arrays.asList();
 
         // quick validation to ensure the fields are not empty
-        if(email.isEmpty() | password.isEmpty() | firstName.isEmpty() | lastName.isEmpty()){
-            Toast.makeText(getApplicationContext(),"Please populate all fields",Toast.LENGTH_LONG).show();
+        if(email.isEmpty()){
+            mEmail.setError("Please populate all fields");
+
         }
+        if(password.isEmpty()){
+            mPassword.setError("Please populate all fields");
+        }
+        if(firstName.isEmpty()) {
+            mFirstName.setError("Please populate all fields");
+        }
+        if(lastName.isEmpty()) {
+            mLastName.setError("Please populate all fields");
+        }
+        if(cPwd.isEmpty()) {
+            mConfirmPassword.setError("Please populate all fields");
+        }
+
         else if (!password.equals(cPwd)){
-            Toast.makeText(getApplicationContext(),"Passwords do not match",Toast.LENGTH_LONG).show();
+            mConfirmPassword.setError("Passwords do not match");
         }
         else if (isChecked != true){
-            Toast.makeText(getApplicationContext(),"Please accept terms and conditions to create an account",Toast.LENGTH_LONG).show();
+            mCheckBox.setError("Please accept terms and conditions to create an account");
         }
         else {
             // This creates a new user in firebase fireStore
