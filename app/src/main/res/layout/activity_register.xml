@@ -11,6 +11,7 @@
     android:id="@+id/register_Header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
     android:gravity="center"
     android:text="Hike NZ"
     android:textSize="60sp"
@@ -99,7 +100,7 @@
         android:layout_marginLeft="70dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
-        android:text="Accept Terms and Conditions"
+        android:text="Accept Privacy Policy"
         android:layout_below="@+id/confirmPassword_TextField"/>
 
     <Button

@@ -30,6 +30,8 @@
             android:layout_marginRight="80dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="8dp"
+            android:maxLength="30"
+            android:digits="abcdefghijklmnopqrstuvwxyz"
             android:gravity="center"
             android:hint="Search" />
 
@@ -50,6 +52,16 @@
             android:background="@drawable/round_background"
             android:layout_margin="8dp"
             android:visibility="gone">
+
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:id="@+id/main_search_latlong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center" />
 
             <Button
                 android:layout_margin="8dp"

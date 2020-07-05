@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     Button searchBtn, showDistanceSearch, showDifficultySearch, showNameSearch, searchLocationBtn,
            showNearMeSearch, searchBeginnerBtn, searchIntermediateBtn, searchAdvancedBtn, searchDistanceBtn;
     EditText searchEditText;
-    TextView distanceCounter;
+    TextView distanceCounter, textLatLong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         distanceCounter = findViewById(R.id.main_distanceCounter_textView);
         searchDistanceBtn = findViewById(R.id.main_searchDistance_button);
         searchLocationBtn = findViewById(R.id.main_searchLocation_button);
+        textLatLong = findViewById(R.id.main_search_latlong);
 
         // displays all tracks on activity start
         Query query = trackRef;
@@ -102,8 +103,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String str = searchEditText.getText().toString();
-                Query q = trackRef.whereEqualTo("Name", str);
-                setUpRecyclerView(q);
+                if (str.isEmpty() || str.length() > 30){
+                    searchEditText.setError("Please enter a valid input");
+                }
+                else {
+                    Query q = trackRef.whereEqualTo("Name", str);
+                    setUpRecyclerView(q);
+                }
             }
         });
         //listener that displays beginner tracks
@@ -172,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
         locationRequest.setInterval(10000);
         locationRequest.setFastestInterval(3000);
         locationRequest.setPriority(locationRequest.PRIORITY_LOW_POWER);
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
@@ -185,7 +190,8 @@ public class MainActivity extends AppCompatActivity {
                     int latestLocationIndex = locationResult.getLocations().size() - 1;
                     double userLatitude = locationResult.getLocations().get(latestLocationIndex).getLatitude();
                     double userLongitude = locationResult.getLocations().get(latestLocationIndex).getLongitude();
-                    // needs to be converted into an address
+                    textLatLong.setText(String.format("Latitude: %s\nLongitude: %s", userLatitude, userLongitude));
+                    // get latest location returns null for some reason
                 }
             }
         }, Looper.getMainLooper());
