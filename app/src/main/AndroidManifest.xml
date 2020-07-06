@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".updateTrackActivity"></activity>
+        <activity android:name=".ShowUsersActivity"></activity>
+        <activity android:name=".updateTrackActivity" />
         <activity android:name=".CreateTrackActivity" />
         <activity android:name=".ImagesActivity" />
         <activity android:name=".AddImageActivity" />

@@ -21,6 +21,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -36,7 +37,7 @@ import javax.annotation.Nullable;
 
 public class TrackActivity extends AppCompatActivity implements OnMapReadyCallback {
     TextView name, time, distance, difficulty, description;
-    Button update;
+    Button update, delete;
     RelativeLayout mapView;
     ImageView dogFriendly;
     FirebaseFirestore fStore;
@@ -57,6 +58,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         description = findViewById(R.id.track_description);
         dogFriendly = findViewById(R.id.dogFriendly_ic);
         update = findViewById(R.id.track_update_btn);
+        delete = findViewById(R.id.track_delete_btn);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
@@ -69,31 +71,36 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 role = (String) documentSnapshot.getString("role");
                 if (role.equals("1")){
                     update.setVisibility(View.VISIBLE);
+                    delete.setVisibility(View.VISIBLE);
                 }
             }
         });
 
         // populates track activity template with selected track information from passed track id
-        DocumentReference docReference = fStore.collection("Tracks").document(value);
+        final DocumentReference docReference = fStore.collection("Tracks").document(value);
         docReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                long j = documentSnapshot.getLong("Distance");
-                if ( j > 10){
-                    time.setText(documentSnapshot.getLong("Time").toString() + " day(s)");
+                if (docReference == null){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    long j = documentSnapshot.getLong("Distance");
+                    if (j > 10) {
+                        time.setText(documentSnapshot.getLong("Time").toString() + " day(s)");
+                    } else {
+                        time.setText(documentSnapshot.getLong("Time").toString() + " hr(s)");
+                    }
+                    name.setText(documentSnapshot.getString("Name"));
+                    distance.setText(j + " km");
+                    difficulty.setText(documentSnapshot.getString("Difficulty"));
+                    description.setText(documentSnapshot.getString("Description"));
+                    boolean i = documentSnapshot.getBoolean("DogFriendly");
+                    if (i == true) {
+                        dogFriendly.setBackgroundResource(R.drawable.ic_yes);
+                    }
+                    tName = documentSnapshot.getString("Name");
                 }
-                else{
-                    time.setText(documentSnapshot.getLong("Time").toString() + " hr(s)");
-                }
-                name.setText(documentSnapshot.getString("Name"));
-                distance.setText(j + " km");
-                difficulty.setText(documentSnapshot.getString("Difficulty"));
-                description.setText(documentSnapshot.getString("Description"));
-                boolean i = documentSnapshot.getBoolean("DogFriendly");
-                if (i == true) {
-                    dogFriendly.setBackgroundResource(R.drawable.ic_yes);
-                }
-                tName = documentSnapshot.getString("Name");
             }
         });
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -115,6 +122,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 startActivity(intent);
             }
         });
+
     }
 
     @Override
@@ -184,5 +192,17 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         Intent intent = new Intent(getApplicationContext(), AddImageActivity.class);
         intent.putExtra("trackid", value);
         startActivity(intent);
+    }
+
+    public void deleteTrack(View view) {
+        DocumentReference docR = fStore.collection("Tracks").document(value);
+        docR.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(TrackActivity.this, "Track Deleted!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

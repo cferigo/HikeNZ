@@ -96,6 +96,12 @@ public class ProfileActivity extends AppCompatActivity {
                startActivity(new Intent(getApplicationContext(), CreateTrackActivity.class));
            }
        });
+       showUsers.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               startActivity(new Intent(getApplicationContext(), ShowUsersActivity.class));
+           }
+       });
     }
 
     @Override
