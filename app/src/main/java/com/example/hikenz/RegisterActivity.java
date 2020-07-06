@@ -104,6 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                         user.put("email", email);
                         user.put("favorite", favorite);
                         user.put("finished", finished);
+                        user.put("role", "0");
 
                         docReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
