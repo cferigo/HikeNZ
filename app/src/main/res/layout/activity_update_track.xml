@@ -1,9 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".updateTrackActivity">
+    android:background="@drawable/gradient_background"
+    tools:context=".RegisterActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/updateTrack_Header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Hike NZ"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/updateTrack_subHeader"
+                android:layout_below="@+id/updateTrack_Header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Create New Track"
+                android:textSize="16sp"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/updateTrack_Name_TextField"
+                android:layout_below="@+id/updateTrack_subHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="70dp"
+                android:layout_marginLeft="70dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:hint="Track Name"
+                android:inputType="text"
+                android:textColorHint="#000000"/>
+
+            <EditText
+                android:id="@+id/updateTrack_Description_TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateTrack_Name_TextField"
+                android:layout_centerHorizontal="true"
+                android:inputType="textCapSentences|textMultiLine"
+                android:maxLines ="5"
+                android:maxLength ="2000"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="70dp"
+                android:hint="track Description"
+                android:textColorHint="#000000"/>
+
+            <EditText
+                android:id="@+id/updateTrack_difficulty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateTrack_Description_TextField"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="70dp"
+                android:hint="Difficulty? spinner?"
+                android:inputType="textEmailAddress"
+                android:textColorHint="#000000"/>
+
+
+
+            <EditText
+                android:id="@+id/updateTrack_Distance_TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateTrack_difficulty"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="70dp"
+                android:hint="Distance"
+                android:textColorHint="#000000"
+                android:inputType="numberDecimal"/>
+
+            <EditText
+                android:id="@+id/updateTrack_Time_TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateTrack_Distance_TextField"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="70dp"
+                android:hint="Time To Complete"
+                android:textColorHint="#000000"
+                android:inputType="numberDecimal"/>
+
+            <CheckBox
+                android:id="@+id/updateTrack_Dog_checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="70dp"
+                android:text="Dog Friendly"
+                android:layout_below="@+id/updateTrack_Time_TextField"/>
+
+            <EditText
+                android:id="@+id/updateTrack_Latitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateTrack_Dog_checkBox"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="70dp"
+                android:hint="Latitude"
+                android:textColorHint="#000000" />
+
+            <EditText
+                android:id="@+id/updateTrack_Longitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateTrack_Latitude"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="70dp"
+                android:hint="Longitude"
+                android:textColorHint="#000000" />
+
+            <Button
+                android:id="@+id/updateTrack_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateTrack_Longitude"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/round_button"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Update"
+                android:textColor="#ffffff"/>
+
+            <Button
+                android:id="@+id/updateTrack_back_Link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateTrack_Button"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="Back"
+                android:textSize="16sp"
+                android:textColor="@android:color/holo_blue_dark"/>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

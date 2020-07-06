@@ -255,9 +255,7 @@
                 android:onClick="photosButton"/>
 
                 <Button
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_margin="20dp"
                     android:id="@+id/track_review_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -266,7 +264,18 @@
                     android:textColor="#ffffff"
                     android:onClick="reviewActivityButton"/>
 
-
+                <Button
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/track_update_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_button"
+                    android:text="Update"
+                    android:textColor="#ffffff"
+                    android:onClick="reviewActivityButton"
+                    android:visibility="gone"/>
             </LinearLayout>
 
     </LinearLayout>

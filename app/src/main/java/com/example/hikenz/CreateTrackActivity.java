@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,7 +23,7 @@ import java.util.Map;
 
 public class CreateTrackActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
-    Button create;
+    Button create, back;
     EditText name, desc, dif, time, dist, lat, lng;
     CheckBox dog;
     String tName, tDesc, tDifficulty, tLatit, tLongi;
@@ -44,6 +45,7 @@ public class CreateTrackActivity extends AppCompatActivity {
         lat = findViewById(R.id.addTrack_Latitude);
         lng = findViewById(R.id.addTrack_Longitude);
         dog = findViewById(R.id.addTrack_Dog_checkBox);
+        back = findViewById(R.id.addTrack_back_Link);
 
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -77,11 +79,19 @@ public class CreateTrackActivity extends AppCompatActivity {
                 docReference.set(track).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d("TAG", "onSuccess: review created");
+                        Log.d("TAG", "onSuccess: track created");
                     }
                 });
-                Toast.makeText(CreateTrackActivity.this, "Track Created" + tLat + tLong, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateTrackActivity.this, "Track Created", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
             }
         });

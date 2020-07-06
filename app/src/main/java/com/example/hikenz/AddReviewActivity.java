@@ -27,8 +27,7 @@ public class AddReviewActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     TextView fName;
     EditText fReview;
-    String userID;
-    String value;
+    String userID, value, title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class AddReviewActivity extends AppCompatActivity {
         fReview = findViewById(R.id.addRev_review_editTExt);
 
         value = getIntent().getStringExtra("trackid");
-
+        title = getIntent().getStringExtra("trackname");
 
         // Getting the current user
         final DocumentReference docReference = fStore.collection("Users").document(userID);
@@ -77,6 +76,7 @@ public class AddReviewActivity extends AppCompatActivity {
             Toast.makeText(AddReviewActivity.this, "Review Created", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
             intent.putExtra("trackid", value);
+            intent.putExtra("trackname", title);
             startActivity(intent);
         }
     }

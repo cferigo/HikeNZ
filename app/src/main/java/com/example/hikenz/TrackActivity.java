@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,17 +30,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.GeoPoint;
 
+import java.util.ArrayList;
+
 import javax.annotation.Nullable;
 
 public class TrackActivity extends AppCompatActivity implements OnMapReadyCallback {
     TextView name, time, distance, difficulty, description;
+    Button update;
     RelativeLayout mapView;
     ImageView dogFriendly;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
-    String userID;
-    String tName;
-    String value;
+    String userID, tName, value, role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +56,22 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         difficulty = findViewById(R.id.track_difficulty_textView);
         description = findViewById(R.id.track_description);
         dogFriendly = findViewById(R.id.dogFriendly_ic);
+        update = findViewById(R.id.track_update_btn);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
         mapView = findViewById(R.id.view1);
+
+        DocumentReference docRef = fStore.collection("Users").document(userID);
+        docRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent( DocumentSnapshot documentSnapshot,  FirebaseFirestoreException e) {
+                role = (String) documentSnapshot.getString("role");
+                if (role.equals("1")){
+                    update.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         // populates track activity template with selected track information from passed track id
         DocumentReference docReference = fStore.collection("Tracks").document(value);
@@ -92,6 +106,15 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         } else {
             mapView.setVisibility(View.VISIBLE);
         }
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), updateTrackActivity.class);
+                intent.putExtra("trackid", value);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

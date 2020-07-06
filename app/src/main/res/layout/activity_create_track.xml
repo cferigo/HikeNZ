@@ -151,7 +151,7 @@
         android:text="Create"
         android:textColor="#ffffff"/>
 
-    <TextView
+    <Button
         android:id="@+id/addTrack_back_Link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -160,7 +160,6 @@
         android:layout_marginRight="40dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:onClick="loginLink"
         android:text="Back"
         android:textSize="16sp"
         android:textColor="@android:color/holo_blue_dark"/>

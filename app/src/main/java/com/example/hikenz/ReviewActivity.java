@@ -60,6 +60,7 @@ public class ReviewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddReviewActivity.class);
                 intent.putExtra("trackid", value);
+                intent.putExtra("trackname", title);
                 startActivity(intent);
             }
         });
