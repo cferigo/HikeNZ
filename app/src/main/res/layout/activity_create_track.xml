@@ -78,13 +78,11 @@
         android:layout_marginLeft="70dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
-        android:hint="Difficulty? spinner?"
+        android:hint="Difficulty"
         android:inputType="textEmailAddress"
         android:background="@drawable/round_background"
         android:padding="8dp"
         android:gravity="center"/>
-
-
 
     <EditText
         android:id="@+id/addTrack_Distance_TextField"

@@ -50,7 +50,6 @@ public class updateTrackActivity extends AppCompatActivity {
         lat = findViewById(R.id.updateTrack_Latitude);
         lng = findViewById(R.id.updateTrack_Longitude);
         dog = findViewById(R.id.updateTrack_Dog_checkBox);
-        back = findViewById(R.id.updateTrack_back_Link);
 
 
         DocumentReference docReference = fStore.collection("Tracks").document(value);

@@ -21,6 +21,10 @@ public class TrackAdapter extends FirestoreRecyclerAdapter<Track, TrackAdapter.T
         super(options);
     }
 
+    public void deleteItem(int position) {
+        getSnapshots().getSnapshot(position).getReference().delete();
+    }
+
     @Override
     protected void onBindViewHolder(@NonNull TrackHolder trackHolder, int i, @NonNull Track model) {
         long l = model.getDistance();

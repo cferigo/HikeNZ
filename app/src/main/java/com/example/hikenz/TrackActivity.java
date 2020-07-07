@@ -76,20 +76,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
             }
         });
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DocumentReference docR = fStore.collection("Tracks").document(value);
-                docR.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(TrackActivity.this, "Track Deleted!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
-                    }
-                });
-            }
-        });
 
 // populates track activity template with selected track information from passed track id
         final DocumentReference docReference = fStore.collection("Tracks").document(value);

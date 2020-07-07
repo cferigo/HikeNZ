@@ -120,14 +120,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
-        android:background="@drawable/round_background"
         android:padding="10dp"
-        android:gravity="center"
-        android:textColor="#112710"
+        android:textColor="#ffffff"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:text="Accept Privacy Policy"
-        android:textSize="16sp"
+        android:textSize="18sp"
+        android:buttonTint="#ffffff"
         android:layout_below="@+id/confirmPassword_TextField"/>
 
     <Button

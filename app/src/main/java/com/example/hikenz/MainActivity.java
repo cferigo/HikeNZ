@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,8 +42,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -54,12 +58,14 @@ public class MainActivity extends AppCompatActivity {
     private CollectionReference trackRef = db.collection("Tracks");
     private TrackAdapter adapter;
     //LocationManager locationManager;
+    FirebaseAuth fAuth;
     LinearLayout searchDifficultyLayout;
     RelativeLayout searchNameLayout, searchDistanceLayout;
     Button searchBtn, showDistanceSearch, showDifficultySearch, showNameSearch,
             searchBeginnerBtn, searchIntermediateBtn, searchAdvancedBtn, searchDistanceBtn;
     EditText searchEditText;
     TextView distanceCounter, textLatLong;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
         searchAdvancedBtn = findViewById(R.id.main_searchAdvanced_button);
         distanceCounter = findViewById(R.id.main_distanceCounter_textView);
         searchDistanceBtn = findViewById(R.id.main_searchDistance_button);
-
+        fAuth = FirebaseAuth.getInstance();
+        userID = fAuth.getCurrentUser().getUid();
 
         // displays all tracks on activity start
         Query query = trackRef;
@@ -237,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
         }
         FirestoreRecyclerOptions<Track> options = new FirestoreRecyclerOptions.Builder<Track>().setQuery(query, Track.class).build();
         adapter = new TrackAdapter(options);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        final RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new TrackAdapter.OnItemClickListener() {
@@ -251,6 +258,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         adapter.startListening();
+
+        DocumentReference docRef = db.collection("Users").document(userID);
+        docRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent( DocumentSnapshot documentSnapshot,  FirebaseFirestoreException e) {
+                String role = (String) documentSnapshot.getString("role");
+                if (role.equals("1")){
+                    new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                        @Override
+                        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                            return false;
+                        }
+                        @Override
+                        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                            adapter.deleteItem(viewHolder.getAdapterPosition());
+                        }
+                    }).attachToRecyclerView(recyclerView);
+                }
+            }
+        });
     }
 
     // whenever the activity starts options are all hidden and listener for db updates starts
