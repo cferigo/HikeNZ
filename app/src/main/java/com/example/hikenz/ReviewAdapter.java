@@ -24,6 +24,10 @@ public class ReviewAdapter extends FirestoreRecyclerAdapter<Review, ReviewAdapte
         reviewHolder.textViewreview.setText(model.getReview());
     }
 
+    public void deleteItem(int position) {
+        getSnapshots().getSnapshot(position).getReference().delete();
+    }
+
     @NonNull
     @Override
     public ReviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
