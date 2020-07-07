@@ -64,9 +64,9 @@
         android:layout_below="@+id/login_logo"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/main_bold"
+        android:textColor="#048b12"
         android:gravity="center"
         android:text="Hike NZ"
-        android:textColor="#048b12"
         android:textSize="60sp"
         android:textStyle="bold" />
 

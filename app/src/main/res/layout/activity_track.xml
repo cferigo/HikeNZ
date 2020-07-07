@@ -16,8 +16,8 @@
         android:gravity="center"
         android:layout_marginTop="30dp"
         android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
+        android:fontFamily="@font/main_bold"
+        android:textColor="#048b12"
         />
 
     <RelativeLayout
@@ -87,7 +87,7 @@
                     android:id="@+id/div_1"
                     android:layout_width="2dp"
                     android:layout_height="50dp"
-                    android:background="#b0b0b0"
+                    android:background="#02a9d6"
                     android:layout_toLeftOf="@+id/id_1"
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="20dp"
@@ -121,7 +121,7 @@
                     android:id="@+id/div_2"
                     android:layout_width="2dp"
                     android:layout_height="50dp"
-                    android:background="#b0b0b0"
+                    android:background="#02a9d6"
                     android:layout_toRightOf="@+id/id_1"
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="20dp"
@@ -189,7 +189,7 @@
                     android:id="@+id/track_saveFav_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_background"
+                    android:background="@drawable/white_button_border"
                     android:text="favorites"
                     android:textColor="#000000"
                     android:onClick="saveFavoriteButton"/>
@@ -198,7 +198,7 @@
                     android:id="@+id/div_3"
                     android:layout_width="2dp"
                     android:layout_height="40dp"
-                    android:background="#b0b0b0"
+                    android:background="#02a9d6"
                     android:layout_toLeftOf="@+id/id_1"
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="15dp"
@@ -211,7 +211,7 @@
                     android:id="@+id/track_saveFin_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_background"
+                    android:background="@drawable/white_button_border"
                     android:text="finished"
                     android:textColor="#000000"
                     android:onClick="saveFinishedButton"/>
@@ -249,9 +249,9 @@
                 android:id="@+id/track_image_Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_button"
+                android:background="@drawable/white_button_border"
                 android:text="Photos"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:onClick="photosButton"/>
 
                 <Button
@@ -259,9 +259,9 @@
                     android:id="@+id/track_review_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_button"
+                    android:background="@drawable/white_button_border"
                     android:text="Reviews"
-                    android:textColor="#ffffff"
+                    android:textColor="#000000"
                     android:onClick="reviewActivityButton"/>
 
                 <Button
@@ -271,9 +271,9 @@
                     android:id="@+id/track_update_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_button"
+                    android:background="@drawable/white_button_border"
                     android:text="Update"
-                    android:textColor="#ffffff"
+                    android:textColor="#000000"
                     android:onClick="reviewActivityButton"
                     android:visibility="gone"/>
             </LinearLayout>
@@ -283,7 +283,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delete"
-
                 android:textStyle="bold"
                 android:background="@drawable/round_button_red"
                 android:layout_gravity="center"

@@ -16,8 +16,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
         android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#ffffff" />
+        android:fontFamily="@font/main_bold"
+        android:textColor="#048b12" />
 
     <Button
         android:layout_alignParentBottom="true"
@@ -27,7 +27,7 @@
         android:id="@+id/addRev_buttonLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
+        android:background="@drawable/grey_button_border"
         android:text="Add"
         android:textColor="#ffffff" />
 
@@ -39,7 +39,7 @@
         android:id="@+id/review_backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
+        android:background="@drawable/grey_button_border"
         android:text="BACK"
         android:textColor="#ffffff"
         />
