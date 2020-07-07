@@ -13,6 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:padding="16dp">
 
         <TextView
@@ -56,7 +57,7 @@
                 android:id="@+id/div_1"
                 android:layout_width="2dp"
                 android:layout_height="50dp"
-                android:background="#b0b0b0"
+                android:background="#00c9ff"
                 android:layout_toLeftOf="@+id/id_1"
                 android:layout_below="@+id/title_textView"
                 android:layout_marginTop="8dp"
@@ -92,7 +93,7 @@
                 android:id="@+id/div_2"
                 android:layout_width="2dp"
                 android:layout_height="50dp"
-                android:background="#b0b0b0"
+                android:background="#00c9ff"
                 android:layout_toRightOf="@+id/id_1"
                 android:layout_below="@+id/title_textView"
                 android:layout_marginTop="8dp"

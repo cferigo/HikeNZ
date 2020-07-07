@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
     private TrackAdapter adapter;
     //LocationManager locationManager;
     LinearLayout searchDifficultyLayout;
-    RelativeLayout searchNameLayout, searchDistanceLayout, searchLocationLayout;
-    Button searchBtn, showDistanceSearch, showDifficultySearch, showNameSearch, searchLocationBtn,
-           showNearMeSearch, searchBeginnerBtn, searchIntermediateBtn, searchAdvancedBtn, searchDistanceBtn;
+    RelativeLayout searchNameLayout, searchDistanceLayout;
+    Button searchBtn, showDistanceSearch, showDifficultySearch, showNameSearch,
+            searchBeginnerBtn, searchIntermediateBtn, searchAdvancedBtn, searchDistanceBtn;
     EditText searchEditText;
     TextView distanceCounter, textLatLong;
 
@@ -79,18 +79,15 @@ public class MainActivity extends AppCompatActivity {
         showDifficultySearch = findViewById(R.id.main_searchOptionDifficulty_Button);
         showDistanceSearch = findViewById(R.id.main_searchOptionDistance_Button);
         showNameSearch = findViewById(R.id.main_searchOptionName_Button);
-        showNearMeSearch = findViewById(R.id.main_searchOptionNearBy_Button);
         searchDifficultyLayout = findViewById(R.id.main_searchDifficulty_layout);
         searchDistanceLayout = findViewById(R.id.main_searchDistance_layout);
-        searchLocationLayout = findViewById(R.id.main_searchLocation_layout);
         searchNameLayout = findViewById(R.id.main_searchName_layout);
         searchBeginnerBtn = findViewById(R.id.main_searchBeginner_button);
         searchIntermediateBtn = findViewById(R.id.main_searchIntermediate_button);
         searchAdvancedBtn = findViewById(R.id.main_searchAdvanced_button);
         distanceCounter = findViewById(R.id.main_distanceCounter_textView);
         searchDistanceBtn = findViewById(R.id.main_searchDistance_button);
-        searchLocationBtn = findViewById(R.id.main_searchLocation_button);
-        textLatLong = findViewById(R.id.main_search_latlong);
+
 
         // displays all tracks on activity start
         Query query = trackRef;
@@ -146,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // listener that checks if user has allowed the app to use their location and runs the search location method
-        searchLocationBtn.setOnClickListener(new View.OnClickListener() {
+       /* searchLocationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ContextCompat.checkSelfPermission(
@@ -158,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                     searchLocation();
                 }
             }
-        });
+        });*/
     }
 
     @Override
@@ -287,7 +284,6 @@ public class MainActivity extends AppCompatActivity {
         showDifficultySearch.setVisibility(View.VISIBLE);
         showDistanceSearch.setVisibility(View.VISIBLE);
         showNameSearch.setVisibility(View.VISIBLE);
-        showNearMeSearch.setVisibility(View.VISIBLE);
     }
 
     // shows search by track name layout
@@ -297,7 +293,6 @@ public class MainActivity extends AppCompatActivity {
         hideButtons();
         searchDistanceLayout.setVisibility(View.GONE);
         searchDifficultyLayout.setVisibility(View.GONE);
-        searchLocationLayout.setVisibility(View.GONE);
     }
 
     // shows search by difficulty layout
@@ -307,7 +302,6 @@ public class MainActivity extends AppCompatActivity {
         hideButtons();
         searchDistanceLayout.setVisibility(View.GONE);
         searchNameLayout.setVisibility(View.GONE);
-        searchLocationLayout.setVisibility(View.GONE);
     }
 
     // shows search by distance layout
@@ -317,16 +311,6 @@ public class MainActivity extends AppCompatActivity {
         hideButtons();
         searchNameLayout.setVisibility(View.GONE);
         searchDifficultyLayout.setVisibility(View.GONE);
-        searchLocationLayout.setVisibility(View.GONE);
-    }
-
-    public void searchOptionNearBy(View view) {
-        // show search by distance
-        searchLocationLayout.setVisibility(View.VISIBLE);
-        hideButtons();
-        searchNameLayout.setVisibility(View.GONE);
-        searchDifficultyLayout.setVisibility(View.GONE);
-        searchDistanceLayout.setVisibility(View.GONE);
     }
 
     // increases and decreases the value of the searchable distance
@@ -351,6 +335,5 @@ public class MainActivity extends AppCompatActivity {
         showDifficultySearch.setVisibility(View.GONE);
         showDistanceSearch.setVisibility(View.GONE);
         showNameSearch.setVisibility(View.GONE);
-        showNearMeSearch.setVisibility(View.GONE);
     }
 }
