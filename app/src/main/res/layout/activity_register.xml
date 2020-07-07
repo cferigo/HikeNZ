@@ -20,9 +20,10 @@
     android:layout_marginTop="20dp"
     android:gravity="center"
     android:text="Hike NZ"
+    android:fontFamily="@font/main_bold"
     android:textSize="60sp"
     android:textStyle="bold"
-    android:textColor="#000000"/>
+    android:textColor="#048b12"/>
 
     <TextView
         android:id="@+id/register_SubHeader"
@@ -42,12 +43,13 @@
         android:layout_marginRight="70dp"
         android:background="@drawable/round_background"
         android:padding="10dp"
+        android:gravity="center"
+        android:textColorHint="#112710"
         android:layout_marginLeft="70dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:hint="First Name"
-        android:inputType="text"
-        android:textColorHint="#000000"/>
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/lastName_TextField"
@@ -55,12 +57,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/firstName_TextField"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/round_background"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textColorHint="#112710"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:hint="Last Name"
-        android:inputType="text"
-        android:textColorHint="#000000"/>
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/email_TextField"
@@ -68,12 +73,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/lastName_TextField"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/round_background"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textColorHint="#112710"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#000000"/>
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/password_TextField"
@@ -81,11 +89,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/email_TextField"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/round_background"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textColorHint="#112710"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:hint="Password"
-        android:textColorHint="#000000"
         android:inputType="textPassword"/>
 
     <EditText
@@ -94,21 +105,29 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/password_TextField"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/round_background"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textColorHint="#112710"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:hint="Confirm Password"
-        android:textColorHint="#000000"
         android:inputType="textPassword"/>
 
     <CheckBox
         android:id="@+id/register_checkBox"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
+        android:background="@drawable/round_background"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textColor="#112710"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:text="Accept Privacy Policy"
+        android:textSize="16sp"
         android:layout_below="@+id/confirmPassword_TextField"/>
 
     <Button
