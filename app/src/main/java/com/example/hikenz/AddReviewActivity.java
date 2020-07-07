@@ -56,7 +56,6 @@ public class AddReviewActivity extends AppCompatActivity {
     }
 
     public void addReview(View view) {
-
         String nme = fName.getText().toString();
         String rev = fReview.getText().toString();
         if(rev.isEmpty()) {

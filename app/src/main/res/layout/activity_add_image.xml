@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
-
+    android:padding="16dp"
+    android:background="@drawable/gradient_background">
 
     <Button
         android:id="@+id/button_choose_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose file"
-        android:background="@drawable/round_button"
+        android:background="@drawable/grey_button_border"
         android:textColor="#ffffff"
         android:padding="10dp"/>
 
@@ -51,7 +51,7 @@
         android:text="Upload"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/round_button"
+        android:background="@drawable/grey_button_border"
         android:textColor="#ffffff"
 
 
@@ -59,28 +59,25 @@
     <Button
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-
         android:layout_marginLeft="20dp"
         android:id="@+id/image_backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
+        android:background="@drawable/grey_button_border"
         android:text="BACK"
-        android:textColor="#ffffff"
-        />
+        android:textColor="#ffffff" />
 
-    <TextView
+    <Button
         android:id="@+id/text_view_show_uploads"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show Uploads"
-        android:layout_alignBaseline="@id/button_upload"
-        android:layout_alignBottom="@id/button_upload"
-        android:layout_marginLeft="25dp"
-        android:layout_toRightOf="@id/button_upload"
-        android:textSize="16sp"
-        android:gravity="center"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/grey_button_border"
+        android:text="Show"
+        android:textColor="#ffffff" />
+
 
 
 
