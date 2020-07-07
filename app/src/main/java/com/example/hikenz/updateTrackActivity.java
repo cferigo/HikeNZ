@@ -76,6 +76,8 @@ public class updateTrackActivity extends AppCompatActivity {
                 String l = Double.toString(longitude);
                 lat.setText(k);
                 lng.setText(l);
+
+
             }
         });
 
@@ -98,6 +100,26 @@ public class updateTrackActivity extends AppCompatActivity {
                     uDog = false;
                 }
 
+
+                if(uName.isEmpty()){
+                    name.setError("Please enter Track name");
+                }
+                if(uDesc.isEmpty()){
+                    desc.setError("Please enter Track description");
+                }
+                if(uTime == 0){
+                    time.setError("Please enter Track time");
+                }
+                if(uDist == 0){
+                    desc.setError("Please enter Track distance");
+                }
+                if(tLat == 0){
+                    desc.setError("Please enter Track Latitude");
+                }
+                if(tLat == 0){
+                    desc.setError("Please enter Track Longitude");
+                }else{
+
                 DocumentReference docReference = fStore.collection("Tracks").document(value);
                 Map<String, Object> track = new HashMap<>();
                 track.put("Name", uName);
@@ -118,7 +140,11 @@ public class updateTrackActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("trackid", value);
                 startActivity(intent);
+
+            }
             }
         });
+
     }
+
 }

@@ -23,7 +23,9 @@
         android:text="Hike NZ"
         android:textSize="60sp"
         android:textStyle="bold"
-        android:textColor="#000000"/>
+        android:textColor="#048b12"
+        android:fontFamily="@font/main_bold"
+        />
 
     <TextView
         android:id="@+id/addTrack_subHeader"
@@ -33,7 +35,7 @@
         android:layout_centerHorizontal="true"
         android:text="Create New Track"
         android:textSize="16sp"
-        android:textColor="#000000"/>
+        />
 
     <EditText
         android:id="@+id/addTrack_Name_TextField"
@@ -46,7 +48,9 @@
         android:layout_marginTop="30dp"
         android:hint="Track Name"
         android:inputType="text"
-        android:textColorHint="#000000"/>
+        android:background="@drawable/round_background"
+        android:padding="8dp"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/addTrack_Description_TextField"
@@ -61,7 +65,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:hint="track Description"
-        android:textColorHint="#000000"/>
+        android:background="@drawable/round_background"
+        android:padding="8dp"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/addTrack_difficulty"
@@ -74,7 +80,9 @@
         android:layout_marginRight="70dp"
         android:hint="Difficulty? spinner?"
         android:inputType="textEmailAddress"
-        android:textColorHint="#000000"/>
+        android:background="@drawable/round_background"
+        android:padding="8dp"
+        android:gravity="center"/>
 
 
 
@@ -88,7 +96,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:hint="Distance"
-        android:textColorHint="#000000"
+        android:background="@drawable/round_background"
+        android:padding="8dp"
+        android:gravity="center"
         android:inputType="numberDecimal"/>
 
     <EditText
@@ -101,7 +111,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:hint="Time To Complete"
-        android:textColorHint="#000000"
+        android:background="@drawable/round_background"
+        android:padding="8dp"
+        android:gravity="center"
         android:inputType="numberDecimal"/>
 
     <CheckBox
@@ -112,7 +124,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:text="Dog Friendly"
-        android:layout_below="@+id/addTrack_Time_TextField"/>
+        android:textColor="#ffffff"
+        android:layout_below="@+id/addTrack_Time_TextField"
+        android:buttonTint="#ffffff"/>
 
     <EditText
         android:id="@+id/addTrack_Latitude"
@@ -124,7 +138,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:hint="Latitude"
-        android:textColorHint="#000000" />
+        android:background="@drawable/round_background"
+        android:padding="8dp"
+        android:gravity="center" />
 
     <EditText
         android:id="@+id/addTrack_Longitude"
@@ -136,7 +152,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:hint="Longitude"
-        android:textColorHint="#000000" />
+        android:background="@drawable/round_background"
+        android:padding="8dp"
+        android:gravity="center" />
 
     <Button
         android:id="@+id/addTrack_createTrack_Button"
