@@ -283,9 +283,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delete"
-                android:onClick="deleteTrack"
+
                 android:textStyle="bold"
-                android:background="#FF0000"
+                android:background="@drawable/round_button_red"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:visibility="gone"/>

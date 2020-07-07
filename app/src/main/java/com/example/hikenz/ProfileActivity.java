@@ -84,7 +84,6 @@ public class ProfileActivity extends AppCompatActivity {
                 finTrack.setText(finStringBuilder.toString());
                 role = (String) documentSnapshot.getString("role");
                 if (role.equals("1")){
-                    userLayout.setVisibility(View.GONE);
                     adminLayout.setVisibility(View.VISIBLE);
                 }
             }

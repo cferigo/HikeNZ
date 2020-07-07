@@ -62,14 +62,19 @@
         android:paddingLeft="2dp"
         android:drawableLeft="@drawable/ic_action_email" />
 
+        <ScrollView
+            android:id="@+id/profile_scrollview"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/profile_email"
+            android:layout_height="200dp">
+
         <LinearLayout
             android:id="@+id/profile_trackLists"
             android:layout_margin="20dp"
-            android:layout_below="@+id/profile_email"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:visibility="visible">
+            android:layout_height="200dp"
+            android:orientation="horizontal">
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -121,9 +126,11 @@
                     android:textSize="16sp"/>
             </RelativeLayout>
         </LinearLayout>
+        </ScrollView>
+
         <LinearLayout
             android:id="@+id/admin_layout"
-            android:layout_below="@+id/profile_email"
+            android:layout_below="@+id/profile_scrollview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
