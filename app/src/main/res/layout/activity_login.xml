@@ -48,7 +48,7 @@
         android:id="@+id/login_logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp">
+        android:layout_marginTop="60dp">
 
         <TextView
             android:layout_centerHorizontal="true"
@@ -57,16 +57,16 @@
             android:background="@drawable/logo"/>
     </RelativeLayout>
 
-
     <TextView
         android:id="@+id/login_Header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_logo"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/main_bold"
         android:gravity="center"
         android:text="Hike NZ"
-        android:textColor="#234d20"
+        android:textColor="#048b12"
         android:textSize="60sp"
         android:textStyle="bold" />
 
@@ -78,11 +78,11 @@
         android:gravity="bottom"
         android:padding="5dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="40dp"
         android:onClick="registerLink"
         android:text="Not a Member? Register Here"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="#FFFFFF"
         android:textSize="16sp" />
 
         <Button

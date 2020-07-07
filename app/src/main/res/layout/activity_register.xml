@@ -7,6 +7,12 @@
     android:background="@drawable/gradient_background"
     tools:context=".RegisterActivity">
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <TextView
     android:id="@+id/register_Header"
     android:layout_width="match_parent"
@@ -34,6 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="70dp"
+        android:background="@drawable/round_background"
+        android:padding="10dp"
         android:layout_marginLeft="70dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
@@ -125,9 +133,12 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
         android:onClick="loginLink"
         android:text="Back to login"
         android:textSize="16sp"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:textColor="#bac8e0"/>
+    </RelativeLayout>
+</ScrollView>
 </RelativeLayout>
