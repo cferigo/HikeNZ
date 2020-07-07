@@ -7,14 +7,11 @@
     android:background="@drawable/gradient_background"
     tools:context=".ProfileActivity">
 
-    <RelativeLayout
-    android:id="@+id/profile_rl_1"
-        android:layout_centerInParent="true"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#ffffff"
-    android:layout_marginBottom="20dp"
-    android:paddingBottom="10dp">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/bkimage"
+        android:id="@+id/profile_iv1"/>
 
     <ImageView
         android:id="@+id/profile_imageView"
@@ -26,13 +23,14 @@
 
     <TextView
         android:id="@+id/profile_fName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="place holder"
+        android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textSize="20sp"
         android:layout_below="@+id/profile_imageView" />
 
@@ -41,18 +39,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="place holder2"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:gravity="center"
         android:layout_below="@+id/profile_fName"
         android:layout_marginTop="10dp"
         android:textSize="20sp" />
+    
 
     <TextView
         android:id="@+id/profile_email"
         android:layout_width="220dp"
         android:layout_height="30dp"
         android:text="place holder3"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:layout_marginBottom="30dp"
         android:gravity="center"
         android:layout_below="@+id/profile_lName"
@@ -62,11 +61,29 @@
         android:paddingLeft="2dp"
         android:drawableLeft="@drawable/ic_action_email" />
 
+    
+
+
+
+
+
+
         <ScrollView
             android:id="@+id/profile_scrollview"
             android:layout_width="match_parent"
-            android:layout_below="@+id/profile_email"
+            android:layout_below="@+id/profile_iv1"
             android:layout_height="200dp">
+
+       <androidx.cardview.widget.CardView
+           android:layout_width="350dp"
+           android:layout_height="wrap_content"
+           android:elevation="6dp"
+           app:cardBackgroundColor="@android:color/white"
+           app:cardCornerRadius="4dp"
+           android:layout_margin="30dp"
+           android:padding="10dp"
+           >
+            
 
         <LinearLayout
             android:id="@+id/profile_trackLists"
@@ -126,6 +143,7 @@
                     android:textSize="16sp"/>
             </RelativeLayout>
         </LinearLayout>
+       </androidx.cardview.widget.CardView>
         </ScrollView>
 
         <LinearLayout
@@ -134,7 +152,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
 
             <Button
                 android:id="@+id/profile_how_Users"
@@ -144,7 +163,7 @@
                 android:text="Users"
                 android:textColor="#FFFFFf"
                 android:layout_margin="4dp"
-                android:background="@drawable/round_button"/>
+                android:background="@drawable/grey_button_border"/>
 
             <Button
                 android:id="@+id/profile_create_track"
@@ -154,8 +173,8 @@
                 android:text="Create Track"
                 android:textColor="#FFFFFf"
                 android:layout_margin="4dp"
-                android:background="@drawable/round_button"/>
+                android:background="@drawable/grey_button_border"/>
 
         </LinearLayout>
     </RelativeLayout>
-</RelativeLayout>
+
