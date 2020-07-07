@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="false"
-    android:background="@drawable/bg3"
+    android:background="@drawable/gradient_background"
     tools:context=".LoginActivity">
 
 
@@ -15,16 +15,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_Header"
+        android:background="@drawable/round_background"
+        android:padding="10dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="60dp"
         android:layout_marginRight="70dp"
         android:drawableLeft="@drawable/ic_action_user"
         android:hint="Email"
+        android:textColorHint="#112710"
         android:inputType="textEmailAddress"
-        android:textColor="#112710"
-        android:textColorHint="#000000" />
-
+        android:textColor="#112710" />
 
     <EditText
         android:id="@+id/loginPassword_TextField"
@@ -33,19 +34,36 @@
         android:layout_below="@+id/loginEmail_TextField"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="70dp"
+        android:background="@drawable/round_background"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
+        android:padding="10dp"
         android:drawableLeft="@drawable/ic_action_pwd"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="#112710"
-        android:textColorHint="#000000" />
+        android:textColorHint="#112710" />
+
+    <RelativeLayout
+        android:id="@+id/login_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp">
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:background="@drawable/logo"/>
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/login_Header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_below="@+id/login_logo"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="Hike NZ"
         android:textColor="#234d20"
@@ -69,14 +87,15 @@
 
         <Button
             android:id="@+id/login_Button"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="70dp"
             android:background="@drawable/round_button"
             android:onClick="Login"
             android:text="LOGIN"
             android:layout_below="@id/loginPassword_TextField"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="70dp"
             android:textColor="#ffffff" />
 
 </RelativeLayout>

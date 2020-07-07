@@ -46,12 +46,6 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
-        int orientation = getResources().getConfiguration().orientation;
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            base.setBackgroundResource(R.drawable.gradient_background);
-        } else {
-            base.setBackgroundResource(R.drawable.bg3);
-        }
     }
 
     // on click event that takes user to the register activity
