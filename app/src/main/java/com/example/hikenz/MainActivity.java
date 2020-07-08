@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
     private TrackAdapter adapter;
     //LocationManager locationManager;
     FirebaseAuth fAuth;
-    LinearLayout searchDifficultyLayout;
+    LinearLayout searchDifficultyLayout, trackList, mainBtnView;
     RelativeLayout searchNameLayout, searchDistanceLayout;
-    Button searchBtn, showDistanceSearch, showDifficultySearch, showNameSearch,
-            searchBeginnerBtn, searchIntermediateBtn, searchAdvancedBtn, searchDistanceBtn;
+    Button searchBtn, showDistanceSearch, showDifficultySearch, showNameSearch, mainShowProfile,
+            searchBeginnerBtn, searchIntermediateBtn, searchAdvancedBtn, searchDistanceBtn, mainShowAllTracks;
     EditText searchEditText;
     TextView distanceCounter, textLatLong;
     String userID;
@@ -93,14 +93,31 @@ public class MainActivity extends AppCompatActivity {
         searchAdvancedBtn = findViewById(R.id.main_searchAdvanced_button);
         distanceCounter = findViewById(R.id.main_distanceCounter_textView);
         searchDistanceBtn = findViewById(R.id.main_searchDistance_button);
+        mainShowAllTracks = findViewById(R.id.main_showTracks_btn);
+        mainShowProfile = findViewById(R.id.main_showProfile_btn);
+        trackList = findViewById(R.id.main_list_view);
+        mainBtnView = findViewById(R.id.main_first_btns);
         fAuth = FirebaseAuth.getInstance();
         userID = fAuth.getCurrentUser().getUid();
 
-        // displays all tracks on activity start
-        Query query = trackRef;
-        setUpRecyclerView(query);
 
         //getLocation();
+
+        // show all tracks
+        mainShowAllTracks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Query query = trackRef;
+                setUpRecyclerView(query);
+            }
+        });
+
+        mainShowProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            }
+        });
 
         // listener the displays a searched by name track
         searchBtn.setOnClickListener(new View.OnClickListener() {
@@ -239,6 +256,8 @@ public class MainActivity extends AppCompatActivity {
 
     // creates recycler view containing tracks that match the query passed to it
     private void setUpRecyclerView(Query query) {
+        mainBtnView.setVisibility(View.GONE);
+        trackList.setVisibility(View.VISIBLE);
         if (adapter != null) {
             adapter.stopListening();
         }
@@ -284,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        adapter.startListening();
+        //adapter.startListening();
         // hide buttons on start
         hideButtons();
         // hide searching layouts on start
@@ -296,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        adapter.stopListening();
+       // adapter.stopListening();
     }
 
     // logs the current user out of the app so when user opens the app again they must sign in
