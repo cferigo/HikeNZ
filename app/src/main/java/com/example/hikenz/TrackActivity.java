@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
 
 public class TrackActivity extends AppCompatActivity implements OnMapReadyCallback {
     TextView name, time, distance, difficulty, description;
-    Button update, delete;
+    Button update;
     RelativeLayout mapView;
     ImageView dogFriendly;
     FirebaseFirestore fStore;
@@ -58,7 +58,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         description = findViewById(R.id.track_description);
         dogFriendly = findViewById(R.id.dogFriendly_ic);
         update = findViewById(R.id.track_update_btn);
-        delete = findViewById(R.id.track_delete_btn);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
@@ -71,7 +70,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 role = (String) documentSnapshot.getString("role");
                 if (role.equals("1")){
                     update.setVisibility(View.VISIBLE);
-                    delete.setVisibility(View.VISIBLE);
                 }
             }
         });
